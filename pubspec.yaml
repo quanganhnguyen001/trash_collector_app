@@ -25,6 +25,8 @@ dependencies:
   hydrated_bloc: ^9.1.2
   equatable: ^2.0.5
   path_provider: ^2.1.1
+  # For local storage
+  shared_preferences: ^2.2.2
   
   # For multiple languages
   intl_utils: ^2.7.0
