@@ -12,12 +12,39 @@ import 'package:flutter/widgets.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/bg_login.png
+  AssetGenImage get bgLogin =>
+      const AssetGenImage('assets/images/bg_login.png');
+
+  /// File path: assets/images/bg_signup.png
+  AssetGenImage get bgSignup =>
+      const AssetGenImage('assets/images/bg_signup.png');
+
+  /// File path: assets/images/green_natural_img.png
+  AssetGenImage get greenNaturalImg =>
+      const AssetGenImage('assets/images/green_natural_img.png');
+
   /// File path: assets/images/launcher_icon.png
   AssetGenImage get launcherIcon =>
       const AssetGenImage('assets/images/launcher_icon.png');
 
+  /// File path: assets/images/recycle_trash_img.png
+  AssetGenImage get recycleTrashImg =>
+      const AssetGenImage('assets/images/recycle_trash_img.png');
+
+  /// File path: assets/images/trash_collector_img.png
+  AssetGenImage get trashCollectorImg =>
+      const AssetGenImage('assets/images/trash_collector_img.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [launcherIcon];
+  List<AssetGenImage> get values => [
+        bgLogin,
+        bgSignup,
+        greenNaturalImg,
+        launcherIcon,
+        recycleTrashImg,
+        trashCollectorImg
+      ];
 }
 
 class Assets {

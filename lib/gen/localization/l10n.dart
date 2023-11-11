@@ -50,11 +50,101 @@ class Str {
     return Localizations.of<Str>(context, Str);
   }
 
-  /// `xin chao`
-  String get test {
+  /// `Đăng nhập`
+  String get login {
     return Intl.message(
-      'xin chao',
-      name: 'test',
+      'Đăng nhập',
+      name: 'login',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mật khẩu`
+  String get password {
+    return Intl.message(
+      'Mật khẩu',
+      name: 'password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Quên mật khẩu?`
+  String get forgot_password {
+    return Intl.message(
+      'Quên mật khẩu?',
+      name: 'forgot_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Chưa có tài khoản?`
+  String get dont_have_account {
+    return Intl.message(
+      'Chưa có tài khoản?',
+      name: 'dont_have_account',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Đăng ký`
+  String get sign_up {
+    return Intl.message(
+      'Đăng ký',
+      name: 'sign_up',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tên`
+  String get name {
+    return Intl.message(
+      'Tên',
+      name: 'name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Đã có tài khoản? `
+  String get have_account {
+    return Intl.message(
+      'Đã có tài khoản? ',
+      name: 'have_account',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Vui lòng nhập đúng định dạng email`
+  String get valid_email {
+    return Intl.message(
+      'Vui lòng nhập đúng định dạng email',
+      name: 'valid_email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Vui lòng nhập đúng định dạng mật khẩu`
+  String get valid_password {
+    return Intl.message(
+      'Vui lòng nhập đúng định dạng mật khẩu',
+      name: 'valid_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Vui lòng nhập tên`
+  String get valid_name {
+    return Intl.message(
+      'Vui lòng nhập tên',
+      name: 'valid_name',
       desc: '',
       args: [],
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:trash_collector_app/features/login/view/login_screen.dart';
 import 'package:trash_collector_app/features/onboarding/view/onboarding_screen.dart';
+import 'package:trash_collector_app/features/signup/view/signup_screen.dart';
 
 import '../../features/splash/view/splash_screen.dart';
 
@@ -22,6 +23,12 @@ class OnGenerateRoute {
       return MaterialPageRoute(
         settings: const RouteSettings(name: LoginScreen.routeName),
         builder: (_) => const LoginScreen(),
+      );
+    }
+    if (settings.name == SignupScreen.routeName) {
+      return MaterialPageRoute(
+        settings: const RouteSettings(name: SignupScreen.routeName),
+        builder: (_) => const SignupScreen(),
       );
     }
 

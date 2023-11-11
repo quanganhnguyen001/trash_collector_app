@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:trash_collector_app/features/signup/view/signup_screen.dart';
 
 import '../../../gen/assets/assets.gen.dart';
 import '../../../gen/localization/l10n.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
-  static const String routeName = '/LoginScreen';
+class SignupScreen extends StatefulWidget {
+  const SignupScreen({super.key});
+  static const String routeName = '/SignupScreen';
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignupScreen> createState() => _SignupScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignupScreenState extends State<SignupScreen> {
   final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -23,17 +22,31 @@ class _LoginScreenState extends State<LoginScreen> {
             key: formKey,
             child: Column(
               children: [
-                const SizedBox(
-                  height: 52,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 16),
+                      child: IconButton(
+                        icon: const Icon(
+                          Icons.arrow_back_ios,
+                          color: ColorPalettes.darkColor,
+                        ),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                    )
+                  ],
                 ),
-                Assets.images.bgLogin.image(height: 250),
+                Assets.images.bgSignup.image(height: 250),
                 const SizedBox(
                   height: 16,
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 32),
                   child: Text(
-                    Str.of(context).login,
+                    Str.of(context).sign_up,
                     textAlign: TextAlign.center,
                     style: AppTextStyle.H4(),
                   ),
@@ -46,10 +59,30 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: TextFieldComponents(
                     // controller: context.read<LoginCubit>().emailController,
                     validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return Str.of(context).valid_name;
+                      }
+                      return null;
+                    },
+                    height: 53,
+                    padding: const EdgeInsets.only(left: 16),
+                    hinText: Str.of(context).name,
+                    hintStyle: AppTextStyle.paragraphMedium(
+                        color: ColorPalettes.darkgrayColor),
+                  ),
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: TextFieldComponents(
+                    // controller: context.read<LoginCubit>().emailController,
+                    validator: (value) {
                       if (!RegExp(
                               r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")
-                          .hasMatch(value ?? "")) {
-                        return Str.of(context).valid_email;
+                          .hasMatch(value ?? Str.of(context).valid_email)) {
+                        return '';
                       }
                       return null;
                     },
@@ -69,8 +102,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     // controller: context.read<LoginCubit>().passwordController,
                     validator: (value) {
                       if (!RegExp(r"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$")
-                          .hasMatch(value ?? '')) {
-                        return Str.of(context).valid_password;
+                          .hasMatch(value ?? Str.of(context).valid_password)) {
+                        return '';
                       }
                       return null;
                     },
@@ -93,14 +126,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(
                   height: 16,
                 ),
-                SmallButtonsComponents(
-                  title: Str.of(context).forgot_password,
-                  onTap: () {
-                    // Navigator.of(context)
-                    //     .pushNamed(ForgotPasswordScreen.routeName);
-                  },
-                  textStyle: AppTextStyle.buttonSmall(color: Colors.green),
-                ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
@@ -114,7 +139,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       },
                       height: 56,
                       radius: 16,
-                      title: Str.of(context).login,
+                      title: Str.of(context).sign_up,
                       textStyle: AppTextStyle.buttonMedium(
                           color: ColorPalettes.whiteColor),
                       backgroundColor: Colors.green,
@@ -123,12 +148,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 Text.rich(
                   TextSpan(
-                      text: Str.of(context).dont_have_account,
+                      text: Str.of(context).have_account,
                       style: AppTextStyle.buttonSmall(
                           color: ColorPalettes.darkgrayColor),
                       children: [
                         TextSpan(
-                            text: Str.of(context).sign_up,
+                            text: Str.of(context).login,
                             recognizer: TapAndPanGestureRecognizer()
                               ..onTapUp = (_) {
                                 Navigator.of(context)

@@ -1,4 +1,13 @@
 {
     "@@locale": "en",
-    "test": "test"
+    "login": "Login",
+    "password": "Password",
+    "forgot_password": "Forgot Password?",
+    "dont_have_account": "Don't have account? ",
+    "sign_up": "Sign up",
+    "name": "Name",
+    "have_account": "Already have an account?",
+    "valid_email": "Please enter valid email",
+  "valid_password": "Please enter valid password",
+  "valid_name": "Please enter name"
 }

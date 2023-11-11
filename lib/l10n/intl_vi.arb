@@ -1,4 +1,13 @@
 {
     "@@locale": "vi",
-    "test": "xin chao"
+    "login": "Đăng nhập",
+    "password": "Mật khẩu",
+    "forgot_password": "Quên mật khẩu?",
+    "dont_have_account": "Chưa có tài khoản?",
+    "sign_up": "Đăng ký",
+    "name": "Tên",
+    "have_account": "Đã có tài khoản? ",
+    "valid_email": "Vui lòng nhập đúng định dạng email",
+  "valid_password": "Vui lòng nhập đúng định dạng mật khẩu",
+  "valid_name": "Vui lòng nhập tên"
 }
