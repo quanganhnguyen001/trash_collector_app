@@ -1,10 +1,14 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:trash_collector_app/features/login/view/login_screen.dart';
+import 'package:trash_collector_app/features/auth/base_screen.dart';
+
 import 'package:trash_collector_app/features/onboarding/view/onboarding_screen.dart';
 import 'package:trash_collector_app/gen/assets/assets.gen.dart';
+
+import '../../auth/cubit/auth_cubit.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -34,22 +38,23 @@ class _SplashScreenState extends State<SplashScreen> {
       Navigator.of(context).pushNamedAndRemoveUntil(
           OnboardingScreen.routeName, (route) => false);
     } else {
-      Navigator.of(context)
-          .pushNamedAndRemoveUntil(LoginScreen.routeName, (route) => false);
+      context.read<AuthCubit>().checkAuthentication();
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Center(
-            child: Assets.images.launcherIcon.image(height: 300),
-          ),
-        ],
-      ),
-    );
+    return BaseScreen(builder: (context) {
+      return Scaffold(
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Center(
+              child: Assets.images.launcherIcon.image(height: 300),
+            ),
+          ],
+        ),
+      );
+    });
   }
 }

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:trash_collector_app/app/app_language/app_language_cubit.dart';
+import 'package:trash_collector_app/features/auth/cubit/auth_cubit.dart';
 
 import '../core/router/route.dart';
 import '../gen/localization/l10n.dart';
@@ -19,6 +21,9 @@ class _MyAppState extends State<MyApp> {
     return Builder(builder: (context) {
       return MultiBlocProvider(
         providers: [
+          BlocProvider<AuthCubit>(
+            create: (context) => AuthCubit(),
+          ),
           BlocProvider<AppLanguageCubit>(
             create: (context) => AppLanguageCubit(),
           ),
@@ -40,6 +45,7 @@ class _MyAppState extends State<MyApp> {
               locale: context.read<AppLanguageCubit>().state.locale,
               onGenerateRoute: OnGenerateRoute.route,
               initialRoute: '/SplashScreen',
+              builder: EasyLoading.init(),
             );
           },
         ),

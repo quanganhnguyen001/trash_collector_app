@@ -24,13 +24,24 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "dont_have_account":
             MessageLookupByLibrary.simpleMessage("Chưa có tài khoản?"),
+        "email_are_use":
+            MessageLookupByLibrary.simpleMessage("Email đã được sử dụng"),
+        "enter_email":
+            MessageLookupByLibrary.simpleMessage("Vui lòng nhập email của bạn"),
+        "forgot_pass": MessageLookupByLibrary.simpleMessage("Quên mật khẩu?"),
+        "forgot_pass_des": MessageLookupByLibrary.simpleMessage(
+            "Nhập Email của bạn và chúng tôi sẽ gửi cho bạn link đặt lại mật khẩu"),
         "forgot_password":
             MessageLookupByLibrary.simpleMessage("Quên mật khẩu?"),
         "have_account":
             MessageLookupByLibrary.simpleMessage("Đã có tài khoản? "),
         "login": MessageLookupByLibrary.simpleMessage("Đăng nhập"),
+        "login_exception": MessageLookupByLibrary.simpleMessage(
+            "Vui lòng kiểm tra lại email và mật khẩu"),
         "name": MessageLookupByLibrary.simpleMessage("Tên"),
         "password": MessageLookupByLibrary.simpleMessage("Mật khẩu"),
+        "reset_password":
+            MessageLookupByLibrary.simpleMessage("Đặt lại mật khẩu"),
         "sign_up": MessageLookupByLibrary.simpleMessage("Đăng ký"),
         "valid_email": MessageLookupByLibrary.simpleMessage(
             "Vui lòng nhập đúng định dạng email"),

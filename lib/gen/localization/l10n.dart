@@ -149,6 +149,66 @@ class Str {
       args: [],
     );
   }
+
+  /// `Nhập Email của bạn và chúng tôi sẽ gửi cho bạn link đặt lại mật khẩu`
+  String get forgot_pass_des {
+    return Intl.message(
+      'Nhập Email của bạn và chúng tôi sẽ gửi cho bạn link đặt lại mật khẩu',
+      name: 'forgot_pass_des',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Đặt lại mật khẩu`
+  String get reset_password {
+    return Intl.message(
+      'Đặt lại mật khẩu',
+      name: 'reset_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Vui lòng nhập email của bạn`
+  String get enter_email {
+    return Intl.message(
+      'Vui lòng nhập email của bạn',
+      name: 'enter_email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Quên mật khẩu?`
+  String get forgot_pass {
+    return Intl.message(
+      'Quên mật khẩu?',
+      name: 'forgot_pass',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Vui lòng kiểm tra lại email và mật khẩu`
+  String get login_exception {
+    return Intl.message(
+      'Vui lòng kiểm tra lại email và mật khẩu',
+      name: 'login_exception',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email đã được sử dụng`
+  String get email_are_use {
+    return Intl.message(
+      'Email đã được sử dụng',
+      name: 'email_are_use',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<Str> {

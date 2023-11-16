@@ -24,13 +24,23 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "dont_have_account":
             MessageLookupByLibrary.simpleMessage("Don\'t have account? "),
+        "email_are_use":
+            MessageLookupByLibrary.simpleMessage("Email already in use"),
+        "enter_email": MessageLookupByLibrary.simpleMessage("Enter your email"),
+        "forgot_pass": MessageLookupByLibrary.simpleMessage("Forgot Password?"),
+        "forgot_pass_des": MessageLookupByLibrary.simpleMessage(
+            "Enter your Email and we will send you a password reset link"),
         "forgot_password":
             MessageLookupByLibrary.simpleMessage("Forgot Password?"),
         "have_account":
             MessageLookupByLibrary.simpleMessage("Already have an account?"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
+        "login_exception": MessageLookupByLibrary.simpleMessage(
+            "Please check your email and password again"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
+        "reset_password":
+            MessageLookupByLibrary.simpleMessage("Reset password"),
         "sign_up": MessageLookupByLibrary.simpleMessage("Sign up"),
         "valid_email":
             MessageLookupByLibrary.simpleMessage("Please enter valid email"),

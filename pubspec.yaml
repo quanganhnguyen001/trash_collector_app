@@ -16,6 +16,11 @@ dependencies:
   cupertino_icons: ^1.0.2
   #For firebase
   firebase_core: ^2.17.0
+  firebase_auth: ^4.13.0
+  cloud_firestore: ^4.13.0
+  #For firebase
+  flutter_easyloading: ^3.0.5
+  
 
   # For launcher icon
   flutter_launcher_icons: ^0.13.1
@@ -25,6 +30,7 @@ dependencies:
   hydrated_bloc: ^9.1.2
   equatable: ^2.0.5
   path_provider: ^2.1.1
+  dartz: ^0.10.1
   # For local storage
   shared_preferences: ^2.2.2
   

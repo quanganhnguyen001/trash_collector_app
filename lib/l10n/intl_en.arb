@@ -9,5 +9,11 @@
     "have_account": "Already have an account?",
     "valid_email": "Please enter valid email",
   "valid_password": "Please enter valid password",
-  "valid_name": "Please enter name"
+  "valid_name": "Please enter name",
+  "forgot_pass": "Forgot Password?",
+  "forgot_pass_des": "Enter your Email and we will send you a password reset link",
+  "enter_email": "Enter your email",
+  "reset_password": "Reset password",
+  "login_exception": "Please check your email and password again",
+  "email_are_use": "Email already in use"
 }

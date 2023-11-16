@@ -12,13 +12,24 @@ import 'package:flutter/widgets.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/alert_password.png
+  AssetGenImage get alertPassword =>
+      const AssetGenImage('assets/images/alert_password.png');
+
   /// File path: assets/images/bg_login.png
   AssetGenImage get bgLogin =>
       const AssetGenImage('assets/images/bg_login.png');
 
+  /// File path: assets/images/bg_reset_pass.png
+  AssetGenImage get bgResetPass =>
+      const AssetGenImage('assets/images/bg_reset_pass.png');
+
   /// File path: assets/images/bg_signup.png
   AssetGenImage get bgSignup =>
       const AssetGenImage('assets/images/bg_signup.png');
+
+  /// File path: assets/images/check.png
+  AssetGenImage get check => const AssetGenImage('assets/images/check.png');
 
   /// File path: assets/images/green_natural_img.png
   AssetGenImage get greenNaturalImg =>
@@ -27,6 +38,14 @@ class $AssetsImagesGen {
   /// File path: assets/images/launcher_icon.png
   AssetGenImage get launcherIcon =>
       const AssetGenImage('assets/images/launcher_icon.png');
+
+  /// File path: assets/images/password_hide.png
+  AssetGenImage get passwordHide =>
+      const AssetGenImage('assets/images/password_hide.png');
+
+  /// File path: assets/images/password_show.png
+  AssetGenImage get passwordShow =>
+      const AssetGenImage('assets/images/password_show.png');
 
   /// File path: assets/images/recycle_trash_img.png
   AssetGenImage get recycleTrashImg =>
@@ -38,10 +57,15 @@ class $AssetsImagesGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [
+        alertPassword,
         bgLogin,
+        bgResetPass,
         bgSignup,
+        check,
         greenNaturalImg,
         launcherIcon,
+        passwordHide,
+        passwordShow,
         recycleTrashImg,
         trashCollectorImg
       ];
