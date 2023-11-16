@@ -15,5 +15,7 @@
   "enter_email": "Vui lòng nhập email của bạn",
   "forgot_pass": "Quên mật khẩu?",
   "login_exception": "Vui lòng kiểm tra lại email và mật khẩu",
-  "email_are_use": "Email đã được sử dụng"
+  "email_are_use": "Email đã được sử dụng",
+  "profile": "Cá nhân",
+  "settings": "Cài đặt"
 }

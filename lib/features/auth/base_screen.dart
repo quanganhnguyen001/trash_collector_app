@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:trash_collector_app/home_screen.dart';
+import 'package:trash_collector_app/features/home/view/home_screen.dart';
 
 import '../login/view/login_screen.dart';
 import 'cubit/auth_cubit.dart';

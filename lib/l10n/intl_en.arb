@@ -15,5 +15,7 @@
   "enter_email": "Enter your email",
   "reset_password": "Reset password",
   "login_exception": "Please check your email and password again",
-  "email_are_use": "Email already in use"
+  "email_are_use": "Email already in use",
+  "profile": "Profile",
+  "settings": "Settings"
 }

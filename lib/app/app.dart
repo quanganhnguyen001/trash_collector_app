@@ -5,6 +5,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:trash_collector_app/app/app_language/app_language_cubit.dart';
 import 'package:trash_collector_app/features/auth/cubit/auth_cubit.dart';
 
+import '../common/cubit/user/user_cubit.dart';
 import '../core/router/route.dart';
 import '../gen/localization/l10n.dart';
 
@@ -26,6 +27,9 @@ class _MyAppState extends State<MyApp> {
           ),
           BlocProvider<AppLanguageCubit>(
             create: (context) => AppLanguageCubit(),
+          ),
+          BlocProvider<UserCubit>(
+            create: (context) => UserCubit()..loadUserData(),
           ),
         ],
         child: BlocBuilder<AppLanguageCubit, AppLanguageState>(
