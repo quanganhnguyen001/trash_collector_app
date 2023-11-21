@@ -9,6 +9,7 @@ import 'package:trash_collector_app/features/onboarding/view/onboarding_screen.d
 import 'package:trash_collector_app/features/signup/cubit/signup_cubit.dart';
 import 'package:trash_collector_app/features/signup/view/signup_screen.dart';
 import 'package:trash_collector_app/features/home/view/home_screen.dart';
+import 'package:trash_collector_app/features/upload/view/upload_screen.dart';
 
 import '../../features/splash/view/splash_screen.dart';
 
@@ -18,6 +19,12 @@ class OnGenerateRoute {
       return MaterialPageRoute(
         settings: const RouteSettings(name: SplashScreen.routeName),
         builder: (_) => const SplashScreen(),
+      );
+    }
+    if (settings.name == UploadScreen.routeName) {
+      return MaterialPageRoute(
+        settings: const RouteSettings(name: UploadScreen.routeName),
+        builder: (_) => const UploadScreen(),
       );
     }
     if (settings.name == OnboardingScreen.routeName) {

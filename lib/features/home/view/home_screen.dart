@@ -10,7 +10,8 @@ import '../../../gen/assets/assets.gen.dart';
 import '../../../gen/localization/l10n.dart';
 import '../../../theme/app_style.dart';
 import '../../../theme/color_paletes.dart';
-import '../../auth/cubit/auth_cubit.dart';
+
+import '../../auth/model/user_model.dart';
 import '../cubit/home_cubit.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -30,9 +31,11 @@ class _HomeScreenState extends State<HomeScreen> {
           return BlocBuilder<UserCubit, UserState>(
               builder: (context, userState) {
             List<Widget> page = [
-              RecycleScreen(),
-              ProfileScreen(),
-              SettingScreen(),
+              RecycleScreen(
+                user: userState.user ?? const UserModel(),
+              ),
+              const ProfileScreen(),
+              const SettingScreen(),
             ];
             return Scaffold(
               body: page[homeState.currentIndex],

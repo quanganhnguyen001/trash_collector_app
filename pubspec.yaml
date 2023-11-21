@@ -14,22 +14,35 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  #For UI
+  tflite_flutter: ^0.9.0
+  collection: ^1.17.2
+  image_picker: ^1.0.4
+  image: ^3.2.2
+  cached_network_image: ^3.3.0
+  tflite_flutter_helper:
+    git:
+      url: https://github.com/filofan1/tflite_flutter_helper.git
+      ref: 783f15e5a87126159147d8ea30b98eea9207ac70
+  
+
+  
   #For firebase
   firebase_core: ^2.17.0
   firebase_auth: ^4.13.0
   cloud_firestore: ^4.13.0
   #For firebase
-  flutter_easyloading: ^3.0.5
+  flutter_easyloading: any
   
 
   # For launcher icon
-  flutter_launcher_icons: ^0.13.1
+  flutter_launcher_icons: ^0.11.0
 
   # For architecture
   flutter_bloc: ^8.1.3
   hydrated_bloc: ^9.1.2
   equatable: ^2.0.5
-  path_provider: ^2.1.1
+  path_provider: ^2.0.15
   dartz: ^0.10.1
   # For local storage
   shared_preferences: ^2.2.2
@@ -57,6 +70,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
+    - assets/
   #   - images/a_dot_ham.jpeg
   # example:
   # fonts:

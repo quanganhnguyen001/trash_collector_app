@@ -17,5 +17,14 @@
   "login_exception": "Vui lòng kiểm tra lại email và mật khẩu",
   "email_are_use": "Email đã được sử dụng",
   "profile": "Cá nhân",
-  "settings": "Cài đặt"
+  "settings": "Cài đặt",
+  "hello": "Xin chào,",
+  "log_out": "Đăng xuất",
+  "info_account": "Thông tin tài khoản",
+  "username": "Tên tài khoản",
+  "location": "Địa chỉ",
+  "update_phone": "Cập nhật số điện thoại",
+  "alert_logout": "Bạn có chắc muốn Đăng xuất ?",
+  "yes": "Có",
+  "no": "Không"
 }

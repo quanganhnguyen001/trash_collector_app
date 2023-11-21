@@ -17,5 +17,15 @@
   "login_exception": "Please check your email and password again",
   "email_are_use": "Email already in use",
   "profile": "Profile",
-  "settings": "Settings"
+  "settings": "Settings",
+  "hello": "Hello,",
+  "log_out": "Log out",
+  "info_account": "Account information",
+  "phone": "Phone number",
+  "username": "Username",
+  "location": "Location",
+  "update_phone": "Update phone number",
+  "alert_logout": "Are you sure want to Log out ?",
+  "yes": "Yes",
+  "no": "No"
 }
