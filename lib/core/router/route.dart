@@ -9,9 +9,12 @@ import 'package:trash_collector_app/features/onboarding/view/onboarding_screen.d
 import 'package:trash_collector_app/features/signup/cubit/signup_cubit.dart';
 import 'package:trash_collector_app/features/signup/view/signup_screen.dart';
 import 'package:trash_collector_app/features/home/view/home_screen.dart';
+import 'package:trash_collector_app/features/update_profile/cubit/update_profile_cubit.dart';
+import 'package:trash_collector_app/features/update_profile/view/update_profile_screen.dart';
 import 'package:trash_collector_app/features/upload/view/upload_screen.dart';
 
 import '../../features/splash/view/splash_screen.dart';
+import '../../features/update_profile/model/update_profile_arg.dart';
 
 class OnGenerateRoute {
   static Route<dynamic>? route(RouteSettings settings) {
@@ -25,6 +28,18 @@ class OnGenerateRoute {
       return MaterialPageRoute(
         settings: const RouteSettings(name: UploadScreen.routeName),
         builder: (_) => const UploadScreen(),
+      );
+    }
+    if (settings.name == UpdateProfileScreen.routeName) {
+      final args = settings.arguments as UpdateProfileArg;
+      return MaterialPageRoute(
+        settings: const RouteSettings(name: UpdateProfileScreen.routeName),
+        builder: (_) => BlocProvider(
+          create: (context) => UpdateProfileCubit(),
+          child: UpdateProfileScreen(
+            arg: args,
+          ),
+        ),
       );
     }
     if (settings.name == OnboardingScreen.routeName) {

@@ -31,6 +31,7 @@ dependencies:
   firebase_core: ^2.17.0
   firebase_auth: ^4.13.0
   cloud_firestore: ^4.13.0
+  firebase_storage: ^11.5.2
   #For firebase
   flutter_easyloading: any
   
@@ -53,7 +54,7 @@ dependencies:
   multiple_localization: ^0.4.0 # Support for multiple abr and messages localization files for intl package.
   flutter_localizations:
     sdk: flutter
-  animated_toggle_switch: ^0.8.0 # UI of language button
+  animated_toggle_switch: ^0.7.0 # UI of language button
 
 dev_dependencies:
   flutter_test:

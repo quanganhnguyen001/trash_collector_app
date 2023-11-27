@@ -63,7 +63,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           color: ColorPalettes.secondaryColor,
                         ),
                         shape: BoxShape.circle,
-                        image: DecorationImage(image: imageProvider),
+                        image: DecorationImage(
+                          image: imageProvider,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                     errorWidget: (context, url, error) => Container(

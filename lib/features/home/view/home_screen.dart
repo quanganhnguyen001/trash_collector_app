@@ -35,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 user: userState.user ?? const UserModel(),
               ),
               const ProfileScreen(),
-              const SettingScreen(),
+              SettingScreen(user: userState.user ?? const UserModel()),
             ];
             return Scaffold(
               body: page[homeState.currentIndex],
@@ -71,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ? Colors.green
                                   : ColorPalettes.grayColor),
                         ),
-                        label: 'Trang chu',
+                        label: Str.of(context).home,
                       ),
                       BottomNavigationBarItem(
                           icon: Padding(
