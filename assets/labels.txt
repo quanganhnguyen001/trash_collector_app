@@ -1,6 +1,6 @@
-0 cardboard
-1 glass
-2 metal
-3 paper
-4 plastic
-5 trash
+0 Bìa cứng
+1 Kính
+2 Kim loại
+3 Giấy
+4 Nhựa
+5 Rác

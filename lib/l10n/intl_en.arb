@@ -46,5 +46,9 @@
   "enter_description": "Enter description",
   "select_image": "Press to select image",
   "trash_type" : "Trash type: ",
-  "enter_location": "Enter location"
+  "enter_location": "Enter location",
+  "select_date": "Select date to collect",
+  "select_time": "Select time to collect",
+  "confirm": "Confirm",
+  "accuracy": "Accuracy"
 }

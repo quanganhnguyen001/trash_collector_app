@@ -46,5 +46,9 @@
   "enter_description": "Nhập mô tả",
   "select_image": "Nhấn để chọn ảnh",
   "trash_type" : "Loại rác: ",
-  "enter_location": "Nhập địa chỉ"
+  "enter_location": "Nhập địa chỉ",
+  "select_date": "Chọn ngày thu gom",
+  "select_time": "Chọn thời gian thu gom",
+  "confirm": "Xác nhận",
+  "accuracy": "Độ chính xác"
 }
