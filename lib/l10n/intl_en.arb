@@ -50,5 +50,9 @@
   "select_date": "Select date to collect",
   "select_time": "Select time to collect",
   "confirm": "Confirm",
-  "accuracy": "Accuracy"
+  "accuracy": "Accuracy",
+  "valid_trash_name": "Please enter trash name",
+  "valid_trash_description": "Please enter trash description",
+  "valid_location": "Please enter location",
+  "valid_image" : "Please select image"
 }

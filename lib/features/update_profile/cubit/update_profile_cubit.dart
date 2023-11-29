@@ -18,7 +18,7 @@ import '../../auth/model/user_model.dart';
 part 'update_profile_state.dart';
 
 class UpdateProfileCubit extends Cubit<UpdateProfileState> {
-  UpdateProfileCubit() : super(const UpdateProfileState(selectedImage: ''));
+  UpdateProfileCubit() : super(UpdateProfileState(selectedImage: ''));
   TextEditingController nameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   XFile? file;

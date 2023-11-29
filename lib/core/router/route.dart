@@ -11,6 +11,7 @@ import 'package:trash_collector_app/features/signup/view/signup_screen.dart';
 import 'package:trash_collector_app/features/home/view/home_screen.dart';
 import 'package:trash_collector_app/features/update_profile/cubit/update_profile_cubit.dart';
 import 'package:trash_collector_app/features/update_profile/view/update_profile_screen.dart';
+import 'package:trash_collector_app/features/upload/cubit/upload_cubit.dart';
 import 'package:trash_collector_app/features/upload/view/upload_screen.dart';
 
 import '../../features/splash/view/splash_screen.dart';
@@ -27,7 +28,10 @@ class OnGenerateRoute {
     if (settings.name == UploadScreen.routeName) {
       return MaterialPageRoute(
         settings: const RouteSettings(name: UploadScreen.routeName),
-        builder: (_) => const UploadScreen(),
+        builder: (_) => BlocProvider(
+          create: (context) => UploadCubit(),
+          child: UploadScreen(),
+        ),
       );
     }
     if (settings.name == UpdateProfileScreen.routeName) {

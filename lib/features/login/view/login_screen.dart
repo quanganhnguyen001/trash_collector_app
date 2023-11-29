@@ -79,6 +79,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16),
                         child: TextFieldComponents(
+                          maxlines: 1,
                           controller:
                               context.read<LoginCubit>().passwordController,
                           validator: (value) {

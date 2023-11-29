@@ -50,5 +50,9 @@
   "select_date": "Chọn ngày thu gom",
   "select_time": "Chọn thời gian thu gom",
   "confirm": "Xác nhận",
-  "accuracy": "Độ chính xác"
+  "accuracy": "Độ chính xác",
+  "valid_trash_name": "Vui lòng nhập tên rác",
+  "valid_trash_description": "Vui lòng nhập mô tả",
+  "valid_location": "Vui lòng nhập địa chỉ",
+  "valid_image" : "Vui lòng chọn ảnh"
 }

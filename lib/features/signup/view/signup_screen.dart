@@ -113,6 +113,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16),
                         child: TextFieldComponents(
+                          maxlines: 1,
                           controller:
                               context.read<SignupCubit>().passwordController,
                           validator: (value) {
