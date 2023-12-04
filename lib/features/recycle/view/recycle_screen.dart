@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:trash_collector_app/features/history/view/history_screen.dart';
 import 'package:trash_collector_app/features/upload/view/upload_screen.dart';
 
 import '../../../common/widget/textfield_component.dart';
@@ -56,7 +57,7 @@ class _RecycleScreenState extends State<RecycleScreen> {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 12,
             ),
             Padding(
@@ -89,19 +90,20 @@ class _RecycleScreenState extends State<RecycleScreen> {
                     ),
                     child: Column(
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           height: 8,
                         ),
                         Assets.images.giftBoxIc
                             .image(height: 40, color: Colors.white),
-                        SizedBox(
+                        const SizedBox(
                           height: 8,
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 5),
                           child: Text(
                             Str.of(context).trade_gift,
-                            style: TextStyle(color: Colors.white, fontSize: 12),
+                            style: const TextStyle(
+                                color: Colors.white, fontSize: 12),
                             textAlign: TextAlign.center,
                           ),
                         )
@@ -121,20 +123,20 @@ class _RecycleScreenState extends State<RecycleScreen> {
                       ),
                       child: Column(
                         children: [
-                          SizedBox(
+                          const SizedBox(
                             height: 8,
                           ),
                           Assets.images.scheduleIc
                               .image(height: 40, color: Colors.white),
-                          SizedBox(
+                          const SizedBox(
                             height: 8,
                           ),
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 5),
                             child: Text(
                               Str.of(context).schedule_home_collection,
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 12),
+                              style: const TextStyle(
+                                  color: Colors.white, fontSize: 12),
                               textAlign: TextAlign.center,
                             ),
                           )
@@ -142,32 +144,38 @@ class _RecycleScreenState extends State<RecycleScreen> {
                       ),
                     ),
                   ),
-                  Container(
-                    height: 100,
-                    width: 100,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      color: Colors.green,
-                    ),
-                    child: Column(
-                      children: [
-                        SizedBox(
-                          height: 8,
-                        ),
-                        Assets.images.historyIc
-                            .image(height: 40, color: Colors.white),
-                        SizedBox(
-                          height: 8,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 5),
-                          child: Text(
-                            Str.of(context).history_collecion,
-                            style: TextStyle(color: Colors.white, fontSize: 12),
-                            textAlign: TextAlign.center,
+                  InkWell(
+                    onTap: () {
+                      Navigator.of(context).pushNamed(HistoryScreen.routeName);
+                    },
+                    child: Container(
+                      height: 100,
+                      width: 100,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        color: Colors.green,
+                      ),
+                      child: Column(
+                        children: [
+                          const SizedBox(
+                            height: 8,
                           ),
-                        )
-                      ],
+                          Assets.images.historyIc
+                              .image(height: 40, color: Colors.white),
+                          const SizedBox(
+                            height: 8,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 5),
+                            child: Text(
+                              Str.of(context).history_collecion,
+                              style: const TextStyle(
+                                  color: Colors.white, fontSize: 12),
+                              textAlign: TextAlign.center,
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ],

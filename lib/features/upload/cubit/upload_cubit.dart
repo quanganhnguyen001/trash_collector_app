@@ -1,14 +1,16 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:io';
 
-import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
+
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:image_picker/image_picker.dart';
+
 import 'package:trash_collector_app/features/upload/model/trash_model.dart';
 import 'package:uuid/uuid.dart';
 
@@ -72,8 +74,8 @@ class UploadCubit extends Cubit<UploadState> {
               timeTrash: timeTrash,
               statusTrash: 'pending')
           .toMap());
-    } on FirebaseAuthException catch (e) {
-      print(e);
+    } on FirebaseAuthException catch (_) {
+      rethrow;
     }
     EasyLoading.dismiss();
     Navigator.of(context).pop();

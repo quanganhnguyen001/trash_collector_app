@@ -122,7 +122,8 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                             children: [
                               Text(
                                 Str.of(context).name,
-                                style: TextStyle(fontWeight: FontWeight.w500),
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.w500),
                               ),
                               TextFieldComponents(
                                 controller: context
@@ -153,7 +154,8 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                             children: [
                               Text(
                                 Str.of(context).phone,
-                                style: TextStyle(fontWeight: FontWeight.w500),
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.w500),
                               ),
                               TextFieldComponents(
                                 controller: context

@@ -57,12 +57,12 @@ class _SettingScreenState extends State<SettingScreen> {
                       var data = Center(
                           child: Text(
                         locale.languageCode.toUpperCase(),
-                        style: TextStyle(color: Colors.white),
+                        style: const TextStyle(color: Colors.white),
                       ));
                       if (value) {
                         data = Center(
                             child: Text(locale.languageCode.toUpperCase(),
-                                style: TextStyle(color: Colors.white)));
+                                style: const TextStyle(color: Colors.white)));
                       }
                       return data;
                     },
@@ -109,7 +109,8 @@ class _SettingScreenState extends State<SettingScreen> {
                     arguments: UpdateProfileArg(
                         name: widget.user.name ?? '',
                         phone: widget.user.phone ?? '',
-                        imageUrl: widget.user.imageUrl ?? ''));
+                        imageUrl: widget.user.imageUrl ?? '',
+                        location: widget.user.location ?? ''));
               },
               child: MenuItem(
                 title: Str.of(context).update_info,

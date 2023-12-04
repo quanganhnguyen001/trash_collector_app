@@ -5,10 +5,11 @@ import 'package:image_picker/image_picker.dart';
 import 'package:image/image.dart' as img;
 import 'package:trash_collector_app/common/widget/textfield_component.dart';
 import 'package:trash_collector_app/features/upload/cubit/upload_cubit.dart';
-import 'package:trash_collector_app/features/upload/widget/current_location_widget.dart';
+
 import 'package:trash_collector_app/features/upload/widget/image_bottom_sheet.dart';
 import 'package:trash_collector_app/gen/localization/l10n.dart';
 import '../../../common/widget/button_component.dart';
+import '../../../common/widget/current_location_widget.dart';
 import '../../../theme/app_style.dart';
 import '../../../theme/color_paletes.dart';
 import '../model/classifier.dart';
