@@ -18,20 +18,20 @@ import '../../auth/model/user_model.dart';
 part 'update_profile_state.dart';
 
 class UpdateProfileCubit extends Cubit<UpdateProfileState> {
-  UpdateProfileCubit() : super(UpdateProfileState(selectedImage: ''));
+  UpdateProfileCubit() : super(const UpdateProfileState(selectedImage: null));
   TextEditingController nameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
-  XFile? file;
+  TextEditingController locationController = TextEditingController();
 
   Future<void> selectImage(ImageSource imageSource) async {
-    file = await ImagePicker().pickImage(source: imageSource);
+    final file = await ImagePicker().pickImage(source: imageSource);
 
     if (file != null) {
-      emit(state.copyWith(file?.name));
+      emit(state.copyWith(File(file.path)));
     }
   }
 
-  Future<void> updateProfile(BuildContext ctx) async {
+  Future<void> updateProfileWithImage(BuildContext ctx, File? file) async {
     EasyLoading.show();
     try {
       final ref = FirebaseStorage.instance
@@ -39,7 +39,7 @@ class UpdateProfileCubit extends Cubit<UpdateProfileState> {
           .child('userImage')
           .child('/${FirebaseAuth.instance.currentUser!.uid}');
       if (file != null) {
-        await ref.putFile(File(file?.path ?? ''));
+        await ref.putFile(File(file.path));
       }
 
       String imageUrl = await ref.getDownloadURL();
@@ -47,10 +47,45 @@ class UpdateProfileCubit extends Cubit<UpdateProfileState> {
           .collection('users')
           .doc(FirebaseAuth.instance.currentUser!.uid)
           .update(UserModel(
-            name: nameController.text,
-            phone: phoneController.text,
-            imageUrl: imageUrl,
-          ).toMap());
+                  name: nameController.text,
+                  phone: phoneController.text,
+                  imageUrl: imageUrl,
+                  location: locationController.text)
+              .toMap());
+    } on FirebaseAuthException catch (e) {
+      showDialog(
+          context: ctx,
+          builder: (context) {
+            Future.delayed((const Duration(seconds: 2)), () {
+              Navigator.of(context).pop();
+            });
+            return AlertDialog(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20)),
+              title: Assets.images.alertPassword.image(height: 56),
+              content: Text(
+                e.message.toString(),
+                textAlign: TextAlign.center,
+                style: AppTextStyle.H4(color: Colors.red),
+              ),
+            );
+          });
+    }
+    EasyLoading.dismiss();
+    Navigator.of(ctx).pop();
+  }
+
+  Future<void> updateProfile(BuildContext ctx) async {
+    EasyLoading.show();
+    try {
+      FirebaseFirestore.instance
+          .collection('users')
+          .doc(FirebaseAuth.instance.currentUser!.uid)
+          .update(UserModel(
+                  name: nameController.text,
+                  phone: phoneController.text,
+                  location: locationController.text)
+              .toMap());
     } on FirebaseAuthException catch (e) {
       showDialog(
           context: ctx,

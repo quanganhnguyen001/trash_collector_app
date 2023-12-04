@@ -130,7 +130,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     color: Colors.green,
                     size: 30,
                   ),
-                  label: state.user?.phone ?? '',
+                  label: state.user?.location != ""
+                      ? state.user?.location ?? ''
+                      : Str.of(context).update_location,
                   title: Str.of(context).location,
                 ),
                 Center(

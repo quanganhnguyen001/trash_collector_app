@@ -54,5 +54,10 @@
   "valid_trash_name": "Please enter trash name",
   "valid_trash_description": "Please enter trash description",
   "valid_location": "Please enter location",
-  "valid_image" : "Please select image"
+  "valid_image" : "Please select image",
+  "history_collect": "History collection",
+  "trash_wait": "Pending list",
+  "success_collect": "Success collection",
+  "voucher_list": "Voucher list",
+  "update_location": "Update Location"
 }

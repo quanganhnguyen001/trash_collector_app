@@ -1,10 +1,10 @@
 part of 'update_profile_cubit.dart';
 
 class UpdateProfileState extends Equatable {
-  UpdateProfileState({required this.selectedImage});
-  final String selectedImage;
+  const UpdateProfileState({required this.selectedImage});
+  final File? selectedImage;
 
-  UpdateProfileState copyWith(String? selectedImage) {
+  UpdateProfileState copyWith(File? selectedImage) {
     return UpdateProfileState(
         selectedImage: selectedImage ?? this.selectedImage);
   }

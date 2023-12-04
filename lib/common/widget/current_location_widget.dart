@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
@@ -82,7 +84,7 @@ class _CurrentLocationState extends State<CurrentLocationWidget> {
         children: [
           Text(
             Str.of(context).location,
-            style: TextStyle(fontWeight: FontWeight.w500),
+            style: const TextStyle(fontWeight: FontWeight.w500),
           ),
           TextFieldComponents(
             validator: (value) {
@@ -101,7 +103,7 @@ class _CurrentLocationState extends State<CurrentLocationWidget> {
                   return;
                 }
               },
-              child: Icon(
+              child: const Icon(
                 Icons.location_on,
                 size: 30,
                 color: Colors.red,

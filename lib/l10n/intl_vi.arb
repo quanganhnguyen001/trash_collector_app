@@ -54,5 +54,10 @@
   "valid_trash_name": "Vui lòng nhập tên rác",
   "valid_trash_description": "Vui lòng nhập mô tả",
   "valid_location": "Vui lòng nhập địa chỉ",
-  "valid_image" : "Vui lòng chọn ảnh"
+  "valid_image" : "Vui lòng chọn ảnh",
+  "history_collect": "Lịch sử thu gom",
+  "trash_wait": "Danh sách chờ",
+  "success_collect": "Danh sách đã thu gom",
+  "voucher_list": "Voucher đã đổi",
+  "update_location": "Cập nhật địa chỉ"
 }

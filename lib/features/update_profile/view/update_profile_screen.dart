@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:trash_collector_app/common/widget/current_location_widget.dart';
+import 'package:trash_collector_app/features/upload/widget/image_bottom_sheet.dart';
 
 import '../../../common/widget/button_component.dart';
 import '../../../common/widget/header_button_component.dart';
@@ -27,7 +29,8 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
   void initState() {
     context.read<UpdateProfileCubit>().nameController.text = widget.arg.name;
     context.read<UpdateProfileCubit>().phoneController.text = widget.arg.phone;
-
+    context.read<UpdateProfileCubit>().locationController.text =
+        widget.arg.location;
     super.initState();
   }
 
@@ -68,17 +71,20 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                         ),
                         InkWell(
                             onTap: () {
-                              showImageBottomSheet(ontap1: () {
-                                context
-                                    .read<UpdateProfileCubit>()
-                                    .selectImage(ImageSource.camera);
-                              }, ontap2: () {
-                                context
-                                    .read<UpdateProfileCubit>()
-                                    .selectImage(ImageSource.gallery);
-                              });
+                              ImageBottomSheet.showImageBottomSheet(
+                                  context: context,
+                                  ontap1: () {
+                                    context
+                                        .read<UpdateProfileCubit>()
+                                        .selectImage(ImageSource.camera);
+                                  },
+                                  ontap2: () {
+                                    context
+                                        .read<UpdateProfileCubit>()
+                                        .selectImage(ImageSource.gallery);
+                                  });
                             },
-                            child: state.selectedImage.isEmpty
+                            child: state.selectedImage == null
                                 ? Center(
                                     child: Container(
                                         height: 155,
@@ -104,33 +110,37 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                                 ColorPalettes.secondaryColor)),
                                     child: CircleAvatar(
                                       backgroundImage: FileImage(File(
-                                        context
-                                                .read<UpdateProfileCubit>()
-                                                .file
-                                                ?.path ??
-                                            '',
-                                      )),
+                                          state.selectedImage?.path ?? '')),
                                     ))),
                         const SizedBox(
                           height: 16,
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 16),
-                          child: TextFieldComponents(
-                            controller: context
-                                .read<UpdateProfileCubit>()
-                                .nameController,
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return Str.of(context).valid_name;
-                              }
-                              return null;
-                            },
-                            height: 53,
-                            padding: const EdgeInsets.only(left: 16),
-                            hinText: Str.of(context).username,
-                            hintStyle: AppTextStyle.paragraphMedium(
-                                color: ColorPalettes.darkgrayColor),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                Str.of(context).name,
+                                style: TextStyle(fontWeight: FontWeight.w500),
+                              ),
+                              TextFieldComponents(
+                                controller: context
+                                    .read<UpdateProfileCubit>()
+                                    .nameController,
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return Str.of(context).valid_name;
+                                  }
+                                  return null;
+                                },
+                                height: 53,
+                                padding: const EdgeInsets.only(left: 16),
+                                hinText: Str.of(context).username,
+                                hintStyle: AppTextStyle.paragraphMedium(
+                                    color: ColorPalettes.darkgrayColor),
+                              ),
+                            ],
                           ),
                         ),
                         const SizedBox(
@@ -138,32 +148,49 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 16),
-                          child: TextFieldComponents(
-                            controller: context
-                                .read<UpdateProfileCubit>()
-                                .phoneController,
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return Str.of(context).valid_phone;
-                              }
-                              return null;
-                            },
-                            height: 53,
-                            padding: const EdgeInsets.only(left: 16),
-                            hinText: Str.of(context).phone,
-                            hintStyle: AppTextStyle.paragraphMedium(
-                                color: ColorPalettes.darkgrayColor),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                Str.of(context).phone,
+                                style: TextStyle(fontWeight: FontWeight.w500),
+                              ),
+                              TextFieldComponents(
+                                controller: context
+                                    .read<UpdateProfileCubit>()
+                                    .phoneController,
+                                height: 53,
+                                padding: const EdgeInsets.only(left: 16),
+                                hinText: Str.of(context).update_phone,
+                                hintStyle: AppTextStyle.paragraphMedium(
+                                    color: ColorPalettes.darkgrayColor),
+                              ),
+                            ],
                           ),
                         ),
+                        const SizedBox(
+                          height: 16,
+                        ),
+                        CurrentLocationWidget(
+                            controller: context
+                                .read<UpdateProfileCubit>()
+                                .locationController),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
                             ButtonComponents(
                               onPressed: () {
                                 if (formKey.currentState!.validate()) {
-                                  context
-                                      .read<UpdateProfileCubit>()
-                                      .updateProfile(context);
+                                  if (state.selectedImage != null) {
+                                    context
+                                        .read<UpdateProfileCubit>()
+                                        .updateProfileWithImage(
+                                            context, state.selectedImage);
+                                  } else {
+                                    context
+                                        .read<UpdateProfileCubit>()
+                                        .updateProfile(context);
+                                  }
                                 }
                               },
                               height: 56,
@@ -171,7 +198,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                               title: Str.of(context).save,
                               textStyle: AppTextStyle.buttonMedium(
                                   color: ColorPalettes.whiteColor),
-                              backgroundColor: Colors.red,
+                              backgroundColor: Colors.green,
                             ),
                           ],
                         ),
@@ -185,66 +212,5 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
         },
       ),
     );
-  }
-
-  showImageBottomSheet({
-    required void Function() ontap1,
-    required void Function() ontap2,
-  }) {
-    return showModalBottomSheet(
-        context: context,
-        builder: (ctx) {
-          return SizedBox(
-              height: 150,
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-                child: Column(children: [
-                  InkWell(
-                    onTap: ontap1,
-                    child: Row(
-                      children: [
-                        const Icon(
-                          Icons.camera,
-                          size: 40,
-                        ),
-                        const SizedBox(
-                          width: 16,
-                        ),
-                        Text(
-                          Str.of(context).from_camera,
-                          style: const TextStyle(
-                            fontSize: 20,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 16,
-                  ),
-                  InkWell(
-                    onTap: ontap2,
-                    child: Row(
-                      children: [
-                        const Icon(
-                          Icons.image,
-                          size: 40,
-                        ),
-                        const SizedBox(
-                          width: 16,
-                        ),
-                        Text(
-                          Str.of(context).from_gallery,
-                          style: const TextStyle(
-                            fontSize: 20,
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ]),
-              ));
-        });
   }
 }
