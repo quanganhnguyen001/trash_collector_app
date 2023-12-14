@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:trash_collector_app/features/history/widget/detail_trash_pending.dart';
+import 'package:trash_collector_app/features/history/widget/edit_trash.dart';
 import 'package:trash_collector_app/features/upload/model/trash_model.dart';
 
 import '../../../common/widget/alert_dialog_component.dart';
@@ -40,7 +41,20 @@ class PendingList extends StatelessWidget {
                       ActionPane(motion: const StretchMotion(), children: [
                     SlidableAction(
                       borderRadius: BorderRadius.circular(12),
-                      onPressed: (value) {},
+                      onPressed: (value) async {
+                        QuerySnapshot querySnapshot = await FirebaseFirestore
+                            .instance
+                            .collection('trash')
+                            .get();
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => BlocProvider(
+                                  create: (context) => HistoryCubit(),
+                                  child: EditTrash(
+                                    trash: trashListPending[index],
+                                    docId: querySnapshot.docs[index].id,
+                                  ),
+                                )));
+                      },
                       backgroundColor: Colors.green,
                       label: 'Edit',
                       icon: Icons.edit,

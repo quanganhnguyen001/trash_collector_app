@@ -8,8 +8,8 @@ class TrashModel {
   final String? typeTrash;
   final String? accuracy;
   final String? locationTrash;
-  final String? dateTrash;
-  final String? timeTrash;
+  String? dateTrash;
+  String? timeTrash;
   final String? statusTrash;
   final String? docId;
 

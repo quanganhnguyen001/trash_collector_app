@@ -10,6 +10,7 @@ import '../../../gen/localization/l10n.dart';
 import '../../../theme/app_style.dart';
 import '../../../theme/color_paletes.dart';
 import '../../auth/model/user_model.dart';
+import '../../location/view/trash_location.dart';
 
 class RecycleScreen extends StatefulWidget {
   const RecycleScreen({super.key, required this.user});
@@ -55,6 +56,16 @@ class _RecycleScreenState extends State<RecycleScreen> {
                   ),
                   Row(
                     children: [
+                      InkWell(
+                          onTap: () {
+                            Navigator.of(context)
+                                .pushNamed(TrashLocationScreen.routeName);
+                          },
+                          child:
+                              Assets.images.locationTrashIc.image(height: 40)),
+                      SizedBox(
+                        width: 10,
+                      ),
                       InkWell(
                           onTap: () {
                             // Navigator.of(context)

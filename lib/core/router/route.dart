@@ -7,7 +7,10 @@ import 'package:trash_collector_app/features/forgot_password/view/forgot_passwor
 import 'package:trash_collector_app/features/history/cubit/history_cubit.dart';
 import 'package:trash_collector_app/features/history/view/history_screen.dart';
 import 'package:trash_collector_app/features/history/widget/detail_trash_pending.dart';
+import 'package:trash_collector_app/features/history/widget/edit_trash.dart';
 import 'package:trash_collector_app/features/home/cubit/home_cubit.dart';
+import 'package:trash_collector_app/features/location/cubit/trash_location_cubit.dart';
+import 'package:trash_collector_app/features/location/view/trash_location.dart';
 import 'package:trash_collector_app/features/login/cubit/login_cubit.dart';
 import 'package:trash_collector_app/features/login/view/login_screen.dart';
 import 'package:trash_collector_app/features/onboarding/view/onboarding_screen.dart';
@@ -17,6 +20,7 @@ import 'package:trash_collector_app/features/home/view/home_screen.dart';
 import 'package:trash_collector_app/features/update_profile/cubit/update_profile_cubit.dart';
 import 'package:trash_collector_app/features/update_profile/view/update_profile_screen.dart';
 import 'package:trash_collector_app/features/upload/cubit/upload_cubit.dart';
+import 'package:trash_collector_app/features/upload/model/trash_model.dart';
 import 'package:trash_collector_app/features/upload/view/upload_screen.dart';
 
 import '../../features/splash/view/splash_screen.dart';
@@ -28,6 +32,15 @@ class OnGenerateRoute {
       return MaterialPageRoute(
         settings: const RouteSettings(name: SplashScreen.routeName),
         builder: (_) => const SplashScreen(),
+      );
+    }
+    if (settings.name == TrashLocationScreen.routeName) {
+      return MaterialPageRoute(
+        settings: const RouteSettings(name: TrashLocationScreen.routeName),
+        builder: (_) => BlocProvider(
+          create: (context) => TrashLocationCubit(),
+          child: TrashLocationScreen(),
+        ),
       );
     }
     if (settings.name == AdminScreen.routeName) {
@@ -58,6 +71,7 @@ class OnGenerateRoute {
         ),
       );
     }
+
     if (settings.name == UpdateProfileScreen.routeName) {
       final args = settings.arguments as UpdateProfileArg;
       return MaterialPageRoute(

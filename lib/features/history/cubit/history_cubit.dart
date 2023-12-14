@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:trash_collector_app/features/upload/model/trash_model.dart';
@@ -78,5 +79,30 @@ class HistoryCubit extends Cubit<HistoryState> {
       print(e);
     }
     EasyLoading.dismiss();
+  }
+
+  Future editTrashPending(
+      {required String docId,
+      required String trashname,
+      required String trashDescription,
+      required String locationTrash,
+      required String dateTrash,
+      required String timeTrash,
+      required BuildContext context}) async {
+    EasyLoading.show();
+    try {
+      FirebaseFirestore.instance.collection('trash').doc(docId).update(
+          TrashModel(
+                  trashName: trashname,
+                  trashDescription: trashDescription,
+                  locationTrash: locationTrash,
+                  dateTrash: dateTrash,
+                  timeTrash: timeTrash)
+              .toMap());
+    } on FirebaseAuthException catch (e) {
+      print(e);
+    }
+    EasyLoading.dismiss();
+    Navigator.of(context).pop();
   }
 }
