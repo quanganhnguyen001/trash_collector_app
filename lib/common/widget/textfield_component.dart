@@ -19,7 +19,9 @@ class TextFieldComponents extends StatelessWidget {
       this.rightIcon,
       this.validator,
       this.onSaved,
-      this.maxlines});
+      this.maxlines,
+      this.value,
+      this.readOnly});
   final double? width;
   final double? height;
   final double? radius;
@@ -36,12 +38,15 @@ class TextFieldComponents extends StatelessWidget {
   final bool? obscureText;
   final TextInputType? keyboardType;
   final int? maxlines;
-
+  final String? value;
+  final bool? readOnly;
   final Widget? rightIcon;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      readOnly: readOnly ?? false,
+      initialValue: value,
       maxLines: maxlines,
       textInputAction: TextInputAction.next,
       onSaved: onSaved,

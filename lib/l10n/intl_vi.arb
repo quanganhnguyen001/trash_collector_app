@@ -59,5 +59,7 @@
   "trash_wait": "Danh sách chờ",
   "success_collect": "Danh sách đã thu gom",
   "voucher_list": "Voucher đã đổi",
-  "update_location": "Cập nhật địa chỉ"
+  "update_location": "Cập nhật địa chỉ",
+  "delete_trash_user": "Xóa rác",
+  "delete_trash_content": "Bạn có chắc muốn xóa ?"
 }

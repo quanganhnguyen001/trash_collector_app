@@ -11,18 +11,21 @@ class TrashModel {
   final String? dateTrash;
   final String? timeTrash;
   final String? statusTrash;
+  final String? docId;
 
-  TrashModel(
-      {this.trashId,
-      this.trashName,
-      this.trashDescription,
-      this.trashImageUrl,
-      this.typeTrash,
-      this.accuracy,
-      this.locationTrash,
-      this.dateTrash,
-      this.timeTrash,
-      this.statusTrash});
+  TrashModel({
+    this.trashId,
+    this.trashName,
+    this.trashDescription,
+    this.trashImageUrl,
+    this.typeTrash,
+    this.accuracy,
+    this.locationTrash,
+    this.dateTrash,
+    this.timeTrash,
+    this.statusTrash,
+    this.docId,
+  });
 
   Map<String, dynamic> toMap() {
     final result = <String, dynamic>{};
@@ -56,6 +59,9 @@ class TrashModel {
     }
     if (statusTrash != null) {
       result.addAll({'statusTrash': statusTrash});
+    }
+    if (docId != null) {
+      result.addAll({'docId': docId});
     }
 
     return result;

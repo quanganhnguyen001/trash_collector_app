@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trash_collector_app/features/history/view/history_screen.dart';
 import 'package:trash_collector_app/features/upload/view/upload_screen.dart';
 
+import '../../../common/cubit/user/user_cubit.dart';
 import '../../../common/widget/textfield_component.dart';
 import '../../../gen/assets/assets.gen.dart';
 import '../../../gen/localization/l10n.dart';
@@ -18,6 +20,13 @@ class RecycleScreen extends StatefulWidget {
 }
 
 class _RecycleScreenState extends State<RecycleScreen> {
+  @override
+  void initState() {
+    context.read<UserCubit>().loadUserData();
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

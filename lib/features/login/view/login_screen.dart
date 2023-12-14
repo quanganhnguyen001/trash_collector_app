@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:trash_collector_app/features/admin/features/home_admin/view/admin_screen.dart';
 import 'package:trash_collector_app/features/auth/base_screen.dart';
 import 'package:trash_collector_app/features/signup/view/signup_screen.dart';
 
@@ -122,11 +124,26 @@ class _LoginScreenState extends State<LoginScreen> {
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           ButtonComponents(
-                            onPressed: () {
+                            onPressed: () async {
                               if (formKey.currentState!.validate()) {
                                 context.read<LoginCubit>().login(
                                       ctx: context,
                                     );
+                              } else if (context
+                                          .read<LoginCubit>()
+                                          .emailController
+                                          .text ==
+                                      'admin' &&
+                                  context
+                                          .read<LoginCubit>()
+                                          .passwordController
+                                          .text ==
+                                      'admin') {
+                                Navigator.of(context).pushNamedAndRemoveUntil(
+                                    AdminScreen.routeName, (route) => false);
+                                final SharedPreferences prefs =
+                                    await SharedPreferences.getInstance();
+                                await prefs.setString('isAdmin', 'No');
                               }
                             },
                             height: 56,

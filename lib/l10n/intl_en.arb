@@ -59,5 +59,7 @@
   "trash_wait": "Pending list",
   "success_collect": "Success collection",
   "voucher_list": "Voucher list",
-  "update_location": "Update Location"
+  "update_location": "Update Location",
+  "delete_trash_user": "Delete trash",
+  "delete_trash_content": "Are you sure want to delete ?"
 }

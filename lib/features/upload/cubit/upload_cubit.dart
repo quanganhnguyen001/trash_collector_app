@@ -12,7 +12,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 import 'package:trash_collector_app/features/upload/model/trash_model.dart';
-import 'package:uuid/uuid.dart';
 
 part 'upload_state.dart';
 
@@ -30,8 +29,9 @@ class UploadCubit extends Cubit<UploadState> {
         initialDate: DateTime.now(),
         firstDate: DateTime(2000),
         lastDate: DateTime(3000));
-
-    emit(state.copyWith(selectedDate: dateTime));
+    if (dateTime != null) {
+      emit(state.copyWith(selectedDate: dateTime));
+    }
   }
 
   selectTime(BuildContext context) async {
@@ -53,27 +53,28 @@ class UploadCubit extends Cubit<UploadState> {
       required BuildContext context}) async {
     EasyLoading.show();
     try {
+      final trashId = FirebaseAuth.instance.currentUser!.uid;
       final ref = FirebaseStorage.instance
           .ref()
           .child('trashImage')
-          .child('/${FirebaseAuth.instance.currentUser!.uid}');
+          .child('/$trashId/${DateTime.now().millisecondsSinceEpoch}');
       if (file != null) {
         await ref.putFile(File(file.path));
       }
 
       String imageUrl = await ref.getDownloadURL();
       FirebaseFirestore.instance.collection('trash').doc().set(TrashModel(
-              trashId: const Uuid().v4(),
-              trashName: trashNameController.text,
-              trashDescription: trashDescriptionController.text,
-              trashImageUrl: imageUrl,
-              typeTrash: typeTrash,
-              accuracy: accuracy,
-              locationTrash: locationController.text,
-              dateTrash: dateTrash,
-              timeTrash: timeTrash,
-              statusTrash: 'pending')
-          .toMap());
+            trashId: FirebaseAuth.instance.currentUser!.uid,
+            trashName: trashNameController.text,
+            trashDescription: trashDescriptionController.text,
+            trashImageUrl: imageUrl,
+            typeTrash: typeTrash,
+            accuracy: accuracy,
+            locationTrash: locationController.text,
+            dateTrash: dateTrash,
+            timeTrash: timeTrash,
+            statusTrash: 'pending',
+          ).toMap());
     } on FirebaseAuthException catch (_) {
       rethrow;
     }

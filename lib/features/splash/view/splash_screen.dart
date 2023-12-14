@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:trash_collector_app/features/admin/features/home_admin/view/admin_screen.dart';
 import 'package:trash_collector_app/features/auth/base_screen.dart';
 
 import 'package:trash_collector_app/features/onboarding/view/onboarding_screen.dart';
@@ -22,12 +23,15 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     check();
+
     super.initState();
   }
 
   void check() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     final String? check = prefs.getString('isFirst');
+    final String? checkAdmin = prefs.getString('isAdmin');
+
     await Future.delayed(
       const Duration(
         seconds: 2,
@@ -37,6 +41,9 @@ class _SplashScreenState extends State<SplashScreen> {
     if (check == null) {
       Navigator.of(context).pushNamedAndRemoveUntil(
           OnboardingScreen.routeName, (route) => false);
+    } else if (checkAdmin != null) {
+      Navigator.of(context)
+          .pushNamedAndRemoveUntil(AdminScreen.routeName, (route) => false);
     } else {
       context.read<AuthCubit>().checkAuthentication();
     }

@@ -24,16 +24,36 @@ class $AssetsImagesGen {
   AssetGenImage get bgResetPass =>
       const AssetGenImage('assets/images/bg_reset_pass.png');
 
+  /// File path: assets/images/bg_setting.png
+  AssetGenImage get bgSetting =>
+      const AssetGenImage('assets/images/bg_setting.png');
+
   /// File path: assets/images/bg_signup.png
   AssetGenImage get bgSignup =>
       const AssetGenImage('assets/images/bg_signup.png');
 
+  /// File path: assets/images/chat_logo.png
+  AssetGenImage get chatLogo =>
+      const AssetGenImage('assets/images/chat_logo.png');
+
   /// File path: assets/images/check.png
   AssetGenImage get check => const AssetGenImage('assets/images/check.png');
+
+  /// File path: assets/images/gift_box_ic.png
+  AssetGenImage get giftBoxIc =>
+      const AssetGenImage('assets/images/gift_box_ic.png');
 
   /// File path: assets/images/green_natural_img.png
   AssetGenImage get greenNaturalImg =>
       const AssetGenImage('assets/images/green_natural_img.png');
+
+  /// File path: assets/images/history_ic.png
+  AssetGenImage get historyIc =>
+      const AssetGenImage('assets/images/history_ic.png');
+
+  /// File path: assets/images/ic_trash.png
+  AssetGenImage get icTrash =>
+      const AssetGenImage('assets/images/ic_trash.png');
 
   /// File path: assets/images/launcher_icon.png
   AssetGenImage get launcherIcon =>
@@ -47,27 +67,45 @@ class $AssetsImagesGen {
   AssetGenImage get passwordShow =>
       const AssetGenImage('assets/images/password_show.png');
 
+  /// File path: assets/images/profile.png
+  AssetGenImage get profile => const AssetGenImage('assets/images/profile.png');
+
   /// File path: assets/images/recycle_trash_img.png
   AssetGenImage get recycleTrashImg =>
       const AssetGenImage('assets/images/recycle_trash_img.png');
 
+  /// File path: assets/images/schedule_ic.png
+  AssetGenImage get scheduleIc =>
+      const AssetGenImage('assets/images/schedule_ic.png');
+
   /// File path: assets/images/trash_collector_img.png
   AssetGenImage get trashCollectorImg =>
       const AssetGenImage('assets/images/trash_collector_img.png');
+
+  /// File path: assets/images/wheel 1.png
+  AssetGenImage get wheel1 => const AssetGenImage('assets/images/wheel 1.png');
 
   /// List of all assets
   List<AssetGenImage> get values => [
         alertPassword,
         bgLogin,
         bgResetPass,
+        bgSetting,
         bgSignup,
+        chatLogo,
         check,
+        giftBoxIc,
         greenNaturalImg,
+        historyIc,
+        icTrash,
         launcherIcon,
         passwordHide,
         passwordShow,
+        profile,
         recycleTrashImg,
-        trashCollectorImg
+        scheduleIc,
+        trashCollectorImg,
+        wheel1
       ];
 }
 
@@ -75,6 +113,12 @@ class Assets {
   Assets._();
 
   static const $AssetsImagesGen images = $AssetsImagesGen();
+  static const String labels = 'assets/labels.txt';
+  static const String modelUnquant = 'assets/model_unquant.tflite';
+  static const String modelUnquantTflite = 'assets/model_unquant.tflite.abk';
+
+  /// List of all assets
+  List<String> get values => [labels, modelUnquant, modelUnquantTflite];
 }
 
 class AssetGenImage {
