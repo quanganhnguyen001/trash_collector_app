@@ -25,6 +25,7 @@ import 'package:trash_collector_app/features/upload/view/upload_screen.dart';
 
 import '../../features/splash/view/splash_screen.dart';
 import '../../features/update_profile/model/update_profile_arg.dart';
+import '../../features/voucher/view/voucher_screen.dart';
 
 class OnGenerateRoute {
   static Route<dynamic>? route(RouteSettings settings) {
@@ -32,6 +33,12 @@ class OnGenerateRoute {
       return MaterialPageRoute(
         settings: const RouteSettings(name: SplashScreen.routeName),
         builder: (_) => const SplashScreen(),
+      );
+    }
+    if (settings.name == VoucherScreen.routeName) {
+      return MaterialPageRoute(
+        settings: const RouteSettings(name: VoucherScreen.routeName),
+        builder: (_) => const VoucherScreen(),
       );
     }
     if (settings.name == TrashLocationScreen.routeName) {

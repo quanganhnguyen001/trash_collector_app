@@ -61,5 +61,6 @@
   "voucher_list": "Voucher list",
   "update_location": "Update Location",
   "delete_trash_user": "Delete trash",
-  "delete_trash_content": "Are you sure want to delete ?"
+  "delete_trash_content": "Are you sure want to delete ?",
+  "list_voucher": "List voucher"
 }

@@ -61,5 +61,6 @@
   "voucher_list": "Voucher đã đổi",
   "update_location": "Cập nhật địa chỉ",
   "delete_trash_user": "Xóa rác",
-  "delete_trash_content": "Bạn có chắc muốn xóa ?"
+  "delete_trash_content": "Bạn có chắc muốn xóa ?",
+  "list_voucher": "Danh sách voucher"
 }

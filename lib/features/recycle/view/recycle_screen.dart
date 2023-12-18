@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trash_collector_app/features/history/view/history_screen.dart';
 import 'package:trash_collector_app/features/upload/view/upload_screen.dart';
+import 'package:trash_collector_app/features/voucher/view/voucher_screen.dart';
 
 import '../../../common/cubit/user/user_cubit.dart';
 import '../../../common/widget/textfield_component.dart';
@@ -101,33 +102,38 @@ class _RecycleScreenState extends State<RecycleScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  Container(
-                    height: 100,
-                    width: 100,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      color: Colors.orange,
-                    ),
-                    child: Column(
-                      children: [
-                        const SizedBox(
-                          height: 8,
-                        ),
-                        Assets.images.giftBoxIc
-                            .image(height: 40, color: Colors.white),
-                        const SizedBox(
-                          height: 8,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 5),
-                          child: Text(
-                            Str.of(context).trade_gift,
-                            style: const TextStyle(
-                                color: Colors.white, fontSize: 12),
-                            textAlign: TextAlign.center,
+                  InkWell(
+                    onTap: () {
+                      Navigator.of(context).pushNamed(VoucherScreen.routeName);
+                    },
+                    child: Container(
+                      height: 100,
+                      width: 100,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        color: Colors.orange,
+                      ),
+                      child: Column(
+                        children: [
+                          const SizedBox(
+                            height: 8,
                           ),
-                        )
-                      ],
+                          Assets.images.giftBoxIc
+                              .image(height: 40, color: Colors.white),
+                          const SizedBox(
+                            height: 8,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 5),
+                            child: Text(
+                              Str.of(context).trade_gift,
+                              style: const TextStyle(
+                                  color: Colors.white, fontSize: 12),
+                              textAlign: TextAlign.center,
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                   InkWell(

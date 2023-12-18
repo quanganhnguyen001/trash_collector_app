@@ -57,7 +57,7 @@ class _SettingScreenState extends State<SettingScreen> {
                       var data = Center(
                           child: Text(
                         locale.languageCode.toUpperCase(),
-                        style: const TextStyle(color: Colors.white),
+                        style: const TextStyle(color: Colors.grey),
                       ));
                       if (value) {
                         data = Center(
