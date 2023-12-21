@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trash_collector_app/features/voucher/cubit/voucher_cubit.dart';
-import 'package:trash_collector_app/features/voucher/widget/detail_voucher_widget.dart';
+
 import 'package:trash_collector_app/features/voucher/widget/detaild_voucher_done.dart';
 
-import '../../../gen/localization/l10n.dart';
 import '../../../theme/app_style.dart';
 import '../../../theme/color_paletes.dart';
 
@@ -35,9 +34,9 @@ class ListVoucherCollected extends StatelessWidget {
                             Navigator.of(context).pop();
                           },
                         ),
-                        Text(
+                        const Text(
                           'Danh sách voucher đã đổi',
-                          style: const TextStyle(
+                          style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.w400),
                         ),
                       ],
@@ -119,8 +118,8 @@ class ListVoucherCollected extends StatelessWidget {
                                                 color: ColorPalettes.darkColor),
                                           ),
                                         ),
-                                        Padding(
-                                            padding: const EdgeInsets.symmetric(
+                                        const Padding(
+                                            padding: EdgeInsets.symmetric(
                                                 horizontal: 16),
                                             child: Text(
                                               'Đã sử dụng',

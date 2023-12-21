@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:trash_collector_app/common/cubit/user/user_cubit.dart';
+
 import 'package:trash_collector_app/features/auth/model/user_model.dart';
 import 'package:trash_collector_app/features/history/widget/detail_trash_pending.dart';
 import 'package:trash_collector_app/features/history/widget/edit_trash.dart';

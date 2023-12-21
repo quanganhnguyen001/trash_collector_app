@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:trash_collector_app/common/cubit/user/user_cubit.dart';
+
 import 'package:trash_collector_app/features/admin/features/home_admin/cubit/home_admin_cubit.dart';
 import 'package:trash_collector_app/features/admin/features/home_admin/view/admin_screen.dart';
 import 'package:trash_collector_app/features/auth/model/user_model.dart';
@@ -8,8 +8,7 @@ import 'package:trash_collector_app/features/forgot_password/cubit/forgot_passwo
 import 'package:trash_collector_app/features/forgot_password/view/forgot_password_screen.dart';
 import 'package:trash_collector_app/features/history/cubit/history_cubit.dart';
 import 'package:trash_collector_app/features/history/view/history_screen.dart';
-import 'package:trash_collector_app/features/history/widget/detail_trash_pending.dart';
-import 'package:trash_collector_app/features/history/widget/edit_trash.dart';
+
 import 'package:trash_collector_app/features/home/cubit/home_cubit.dart';
 import 'package:trash_collector_app/features/location/cubit/trash_location_cubit.dart';
 import 'package:trash_collector_app/features/location/view/trash_location.dart';
@@ -22,7 +21,7 @@ import 'package:trash_collector_app/features/home/view/home_screen.dart';
 import 'package:trash_collector_app/features/update_profile/cubit/update_profile_cubit.dart';
 import 'package:trash_collector_app/features/update_profile/view/update_profile_screen.dart';
 import 'package:trash_collector_app/features/upload/cubit/upload_cubit.dart';
-import 'package:trash_collector_app/features/upload/model/trash_model.dart';
+
 import 'package:trash_collector_app/features/upload/view/upload_screen.dart';
 import 'package:trash_collector_app/features/voucher/cubit/voucher_cubit.dart';
 
@@ -55,7 +54,7 @@ class OnGenerateRoute {
         settings: const RouteSettings(name: TrashLocationScreen.routeName),
         builder: (_) => BlocProvider(
           create: (context) => TrashLocationCubit(),
-          child: TrashLocationScreen(),
+          child: const TrashLocationScreen(),
         ),
       );
     }
@@ -64,7 +63,7 @@ class OnGenerateRoute {
         settings: const RouteSettings(name: AdminScreen.routeName),
         builder: (_) => BlocProvider(
           create: (context) => HomeAdminCubit()..fetchDataAdmin(),
-          child: AdminScreen(),
+          child: const AdminScreen(),
         ),
       );
     }

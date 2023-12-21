@@ -64,7 +64,7 @@ class _RecycleScreenState extends State<RecycleScreen> {
                           },
                           child:
                               Assets.images.locationTrashIc.image(height: 40)),
-                      SizedBox(
+                      const SizedBox(
                         width: 10,
                       ),
                       InkWell(

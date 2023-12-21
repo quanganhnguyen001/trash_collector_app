@@ -9,7 +9,6 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:trash_collector_app/features/location/cubit/trash_location_cubit.dart';
 import 'package:http/http.dart' as http;
 import '../../../api_key.dart';
-import '../../../gen/assets/assets.gen.dart';
 
 class TrashLocationScreen extends StatefulWidget {
   const TrashLocationScreen({super.key});
@@ -36,13 +35,13 @@ class _TrashLocationScreenState extends State<TrashLocationScreen> {
   @override
   void initState() {
     customMarker();
-    // TODO: implement initState
+
     super.initState();
   }
 
   customMarker() {
     BitmapDescriptor.fromAssetImage(
-            ImageConfiguration(), 'assets/images/icon_bin.png')
+            const ImageConfiguration(), 'assets/images/icon_bin.png')
         .then((value) {
       setState(() {
         makerIcon = value;
@@ -55,7 +54,7 @@ class _TrashLocationScreenState extends State<TrashLocationScreen> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('Địa điểm gần đây'),
+        title: const Text('Địa điểm gần đây'),
         leading: Padding(
           padding: const EdgeInsets.only(left: 16),
           child: IconButton(
@@ -82,7 +81,7 @@ class _TrashLocationScreenState extends State<TrashLocationScreen> {
                 myLocationButtonEnabled: false,
                 markers: {
                   Marker(
-                      markerId: MarkerId('1'),
+                      markerId: const MarkerId('1'),
                       icon: makerIcon,
                       infoWindow: InfoWindow(
                           title: 'Trường đại học thủy lợi',
@@ -93,9 +92,9 @@ class _TrashLocationScreenState extends State<TrashLocationScreen> {
                             getDirections(position.latitude, position.longitude,
                                 21.0073516, 105.8221555);
                           }),
-                      position: LatLng(21.0073516, 105.8221555)),
+                      position: const LatLng(21.0073516, 105.8221555)),
                   Marker(
-                      markerId: MarkerId('2'),
+                      markerId: const MarkerId('2'),
                       icon: makerIcon,
                       infoWindow: InfoWindow(
                           title: 'Học viện ngân hàng',
@@ -106,9 +105,9 @@ class _TrashLocationScreenState extends State<TrashLocationScreen> {
                             getDirections(position.latitude, position.longitude,
                                 21.0091314, 105.8262383);
                           }),
-                      position: LatLng(21.0091314, 105.8262383)),
+                      position: const LatLng(21.0091314, 105.8262383)),
                   Marker(
-                      markerId: MarkerId('3'),
+                      markerId: const MarkerId('3'),
                       icon: makerIcon,
                       infoWindow: InfoWindow(
                           title: 'Trường đại học công đoàn',
@@ -119,7 +118,7 @@ class _TrashLocationScreenState extends State<TrashLocationScreen> {
                             getDirections(position.latitude, position.longitude,
                                 21.0097431, 105.8231375);
                           }),
-                      position: LatLng(21.0097431, 105.8231375)),
+                      position: const LatLng(21.0097431, 105.8231375)),
                 },
                 mapType: MapType.normal,
                 initialCameraPosition: _kGooglePlex,

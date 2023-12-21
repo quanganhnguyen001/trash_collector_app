@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:trash_collector_app/features/auth/model/user_model.dart';
-import 'package:trash_collector_app/features/voucher/cubit/voucher_cubit.dart';
+
 import 'package:trash_collector_app/features/voucher/model/voucher_model.dart';
 import 'package:trash_collector_app/gen/assets/assets.gen.dart';
 
@@ -57,7 +57,7 @@ class DetailVoucherWidget extends StatelessWidget {
                           fontWeight: FontWeight.w400,
                           color: Colors.green),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                     Assets.images.voucherIc.image(height: 30),
@@ -70,7 +70,7 @@ class DetailVoucherWidget extends StatelessWidget {
             voucher.imageVoucher ?? '',
             fit: BoxFit.cover,
           ),
-          SizedBox(
+          const SizedBox(
             height: 12,
           ),
           Expanded(
@@ -95,14 +95,14 @@ class DetailVoucherWidget extends StatelessWidget {
                               color: ColorPalettes.darkColor),
                           text: 'Đổi',
                           children: [
-                            WidgetSpan(
+                            const WidgetSpan(
                                 child: SizedBox(
                               width: 5,
                             )),
                             TextSpan(
                                 text: voucher.point.toString(),
                                 style: AppTextStyle.H5(color: Colors.green)),
-                            WidgetSpan(
+                            const WidgetSpan(
                                 child: SizedBox(
                               width: 5,
                             )),
@@ -123,7 +123,7 @@ class DetailVoucherWidget extends StatelessWidget {
                           color: ColorPalettes.darkColor),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 12,
                   ),
                   Padding(
@@ -153,7 +153,7 @@ class DetailVoucherWidget extends StatelessWidget {
                           color: ColorPalettes.darkColor),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 12,
                   ),
                   Padding(

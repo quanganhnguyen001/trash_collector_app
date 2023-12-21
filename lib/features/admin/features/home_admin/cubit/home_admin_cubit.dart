@@ -4,10 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:trash_collector_app/features/auth/model/user_model.dart';
 
-import '../../../../../gen/assets/assets.gen.dart';
-import '../../../../../theme/app_style.dart';
 import '../../../../upload/model/trash_model.dart';
 
 part 'home_admin_state.dart';
@@ -79,7 +76,6 @@ class HomeAdminCubit extends Cubit<HomeAdminState> {
   Future<void> confirmCollected(BuildContext context, String docId) async {
     EasyLoading.show();
     try {
-      print(docId);
       await FirebaseFirestore.instance
           .collection('trash')
           .doc(docId)

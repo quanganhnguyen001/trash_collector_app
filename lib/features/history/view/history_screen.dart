@@ -1,6 +1,5 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -8,7 +7,6 @@ import 'package:trash_collector_app/features/auth/model/user_model.dart';
 
 import 'package:trash_collector_app/features/history/cubit/history_cubit.dart';
 import 'package:trash_collector_app/features/history/widget/completed_list.dart';
-import 'package:trash_collector_app/features/history/widget/pending_list.dart';
 
 import '../../../common/widget/alert_dialog_component.dart';
 import '../../../gen/localization/l10n.dart';

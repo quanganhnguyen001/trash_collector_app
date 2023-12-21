@@ -1,10 +1,8 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:trash_collector_app/common/cubit/user/user_cubit.dart';
-import 'package:trash_collector_app/common/widget/alert_dialog_component.dart';
+
 import 'package:trash_collector_app/features/auth/model/user_model.dart';
 import 'package:trash_collector_app/features/voucher/cubit/voucher_cubit.dart';
 import 'package:trash_collector_app/features/voucher/model/voucher_model.dart';
@@ -97,7 +95,7 @@ class _VoucherScreenState extends State<VoucherScreen> {
                             );
                           },
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                         InkWell(
@@ -106,7 +104,7 @@ class _VoucherScreenState extends State<VoucherScreen> {
                                   builder: (context) => BlocProvider(
                                         create: (context) =>
                                             VoucherCubit()..fetchVoucher(),
-                                        child: ListVoucherCollected(),
+                                        child: const ListVoucherCollected(),
                                       )));
                             },
                             child: Assets.images.voucherIc.image(height: 30)),
@@ -226,7 +224,7 @@ class _VoucherScreenState extends State<VoucherScreen> {
                                                             .darkColor),
                                                 text: 'Đổi',
                                                 children: [
-                                                  WidgetSpan(
+                                                  const WidgetSpan(
                                                       child: SizedBox(
                                                     width: 5,
                                                   )),
@@ -236,7 +234,7 @@ class _VoucherScreenState extends State<VoucherScreen> {
                                                           .toString(),
                                                       style: AppTextStyle.H5(
                                                           color: Colors.green)),
-                                                  WidgetSpan(
+                                                  const WidgetSpan(
                                                       child: SizedBox(
                                                     width: 5,
                                                   )),

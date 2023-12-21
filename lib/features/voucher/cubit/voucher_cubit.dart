@@ -1,11 +1,9 @@
-import 'dart:io';
-
-import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_storage/firebase_storage.dart';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:trash_collector_app/features/auth/model/user_model.dart';
 import 'package:trash_collector_app/features/voucher/model/voucher_model.dart';
@@ -13,7 +11,7 @@ import 'package:trash_collector_app/features/voucher/model/voucher_model.dart';
 part 'voucher_state.dart';
 
 class VoucherCubit extends Cubit<VoucherState> {
-  VoucherCubit() : super(VoucherState([], 0));
+  VoucherCubit() : super(const VoucherState([], 0));
 
   addVoucher(
       {required String? nameVoucher,
@@ -44,6 +42,7 @@ class VoucherCubit extends Cubit<VoucherState> {
       rethrow;
     }
     EasyLoading.dismiss();
+    // ignore: use_build_context_synchronously
     Navigator.of(context).pop();
   }
 

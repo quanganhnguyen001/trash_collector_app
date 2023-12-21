@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:trash_collector_app/features/voucher/cubit/voucher_cubit.dart';
+
 import 'package:trash_collector_app/features/voucher/model/voucher_model.dart';
 import 'package:trash_collector_app/gen/assets/assets.gen.dart';
 
-import '../../../common/widget/button_component.dart';
 import '../../../theme/app_style.dart';
 import '../../../theme/color_paletes.dart';
 
@@ -46,14 +44,14 @@ class DetailVoucherDone extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    Text(
+                    const Text(
                       '10000 diem',
-                      style: const TextStyle(
+                      style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w400,
                           color: Colors.green),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                     Assets.images.voucherIc.image(height: 30),
@@ -66,7 +64,7 @@ class DetailVoucherDone extends StatelessWidget {
             voucher.imageVoucher ?? '',
             fit: BoxFit.cover,
           ),
-          SizedBox(
+          const SizedBox(
             height: 12,
           ),
           Expanded(
@@ -93,7 +91,7 @@ class DetailVoucherDone extends StatelessWidget {
                           color: ColorPalettes.darkColor),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 12,
                   ),
                   Padding(
@@ -123,7 +121,7 @@ class DetailVoucherDone extends StatelessWidget {
                           color: ColorPalettes.darkColor),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 12,
                   ),
                   Padding(

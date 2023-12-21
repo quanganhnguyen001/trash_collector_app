@@ -9,7 +9,6 @@ import '../../../common/widget/textfield_component.dart';
 import '../../../gen/localization/l10n.dart';
 import '../../../theme/app_style.dart';
 import '../../../theme/color_paletes.dart';
-import '../../upload/cubit/upload_cubit.dart';
 
 class EditTrash extends StatefulWidget {
   const EditTrash({
@@ -35,7 +34,7 @@ class _EditTrashState extends State<EditTrash> {
     trashNameController.text = widget.trash.trashName ?? '';
     trashDescriptionController.text = widget.trash.trashDescription ?? '';
     locationController.text = widget.trash.locationTrash ?? '';
-    // TODO: implement initState
+
     super.initState();
   }
 
@@ -256,7 +255,6 @@ class _EditTrashState extends State<EditTrash> {
                             children: [
                               ButtonComponents(
                                 onPressed: () {
-                                  print(widget.docId);
                                   context.read<HistoryCubit>().editTrashPending(
                                       docId: widget.docId,
                                       trashname: trashNameController.text,

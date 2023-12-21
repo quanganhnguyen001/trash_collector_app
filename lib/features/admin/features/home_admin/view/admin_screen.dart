@@ -1,13 +1,11 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:trash_collector_app/features/admin/features/home_admin/cubit/home_admin_cubit.dart';
 import 'package:trash_collector_app/features/admin/features/home_admin/widget/completed_trash_list_admin.dart';
-import 'package:trash_collector_app/features/auth/model/user_model.dart';
+
 import 'package:trash_collector_app/features/login/view/login_screen.dart';
 
 import '../../../../../common/widget/alert_dialog_component.dart';
