@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:trash_collector_app/features/auth/model/user_model.dart';
 
 import '../../../../../gen/assets/assets.gen.dart';
 import '../../../../../theme/app_style.dart';
@@ -79,10 +80,15 @@ class HomeAdminCubit extends Cubit<HomeAdminState> {
     EasyLoading.show();
     try {
       print(docId);
-      FirebaseFirestore.instance
+      await FirebaseFirestore.instance
           .collection('trash')
           .doc(docId)
           .update(TrashModel(statusTrash: 'done').toMap());
+
+      // await FirebaseFirestore.instance
+      //     .collection('voucher')
+      //     .doc(FirebaseAuth.instance.currentUser!.uid)
+      //     .update(UserModel(point: ).toMap());
     } on FirebaseAuthException catch (e) {
       print(e);
     }

@@ -33,7 +33,8 @@ class UserCubit extends Cubit<UserState> {
             name: userSnapshot['name'],
             email: userSnapshot['email'],
             phone: userSnapshot['phone'],
-            location: userSnapshot['location']);
+            location: userSnapshot['location'],
+            point: userSnapshot['point']);
       }
     } catch (e) {
       print(e);

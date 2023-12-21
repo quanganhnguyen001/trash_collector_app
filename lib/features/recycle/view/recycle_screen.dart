@@ -104,7 +104,8 @@ class _RecycleScreenState extends State<RecycleScreen> {
                 children: [
                   InkWell(
                     onTap: () {
-                      Navigator.of(context).pushNamed(VoucherScreen.routeName);
+                      Navigator.of(context).pushNamed(VoucherScreen.routeName,
+                          arguments: widget.user);
                     },
                     child: Container(
                       height: 100,
@@ -138,7 +139,8 @@ class _RecycleScreenState extends State<RecycleScreen> {
                   ),
                   InkWell(
                     onTap: () {
-                      Navigator.of(context).pushNamed(UploadScreen.routeName);
+                      Navigator.of(context).pushNamed(UploadScreen.routeName,
+                          arguments: widget.user);
                     },
                     child: Container(
                       height: 100,
@@ -172,7 +174,8 @@ class _RecycleScreenState extends State<RecycleScreen> {
                   ),
                   InkWell(
                     onTap: () {
-                      Navigator.of(context).pushNamed(HistoryScreen.routeName);
+                      Navigator.of(context).pushNamed(HistoryScreen.routeName,
+                          arguments: widget.user);
                     },
                     child: Container(
                       height: 100,

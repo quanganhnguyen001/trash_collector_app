@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:trash_collector_app/common/cubit/user/user_cubit.dart';
 import 'package:trash_collector_app/features/admin/features/home_admin/cubit/home_admin_cubit.dart';
 import 'package:trash_collector_app/features/admin/features/home_admin/view/admin_screen.dart';
+import 'package:trash_collector_app/features/auth/model/user_model.dart';
 import 'package:trash_collector_app/features/forgot_password/cubit/forgot_password_cubit.dart';
 import 'package:trash_collector_app/features/forgot_password/view/forgot_password_screen.dart';
 import 'package:trash_collector_app/features/history/cubit/history_cubit.dart';
@@ -22,6 +24,7 @@ import 'package:trash_collector_app/features/update_profile/view/update_profile_
 import 'package:trash_collector_app/features/upload/cubit/upload_cubit.dart';
 import 'package:trash_collector_app/features/upload/model/trash_model.dart';
 import 'package:trash_collector_app/features/upload/view/upload_screen.dart';
+import 'package:trash_collector_app/features/voucher/cubit/voucher_cubit.dart';
 
 import '../../features/splash/view/splash_screen.dart';
 import '../../features/update_profile/model/update_profile_arg.dart';
@@ -36,9 +39,15 @@ class OnGenerateRoute {
       );
     }
     if (settings.name == VoucherScreen.routeName) {
+      final args = settings.arguments as UserModel;
       return MaterialPageRoute(
         settings: const RouteSettings(name: VoucherScreen.routeName),
-        builder: (_) => const VoucherScreen(),
+        builder: (_) => BlocProvider(
+          create: (context) => VoucherCubit()..fetchVoucher(),
+          child: VoucherScreen(
+            userModel: args,
+          ),
+        ),
       );
     }
     if (settings.name == TrashLocationScreen.routeName) {
@@ -55,26 +64,32 @@ class OnGenerateRoute {
         settings: const RouteSettings(name: AdminScreen.routeName),
         builder: (_) => BlocProvider(
           create: (context) => HomeAdminCubit()..fetchDataAdmin(),
-          child: const AdminScreen(),
+          child: AdminScreen(),
         ),
       );
     }
 
     if (settings.name == HistoryScreen.routeName) {
+      final args = settings.arguments as UserModel;
       return MaterialPageRoute(
         settings: const RouteSettings(name: HistoryScreen.routeName),
         builder: (_) => BlocProvider(
           create: (context) => HistoryCubit()..fetchData(),
-          child: const HistoryScreen(),
+          child: HistoryScreen(
+            userModel: args,
+          ),
         ),
       );
     }
     if (settings.name == UploadScreen.routeName) {
+      final args = settings.arguments as UserModel;
       return MaterialPageRoute(
         settings: const RouteSettings(name: UploadScreen.routeName),
         builder: (_) => BlocProvider(
           create: (context) => UploadCubit(),
-          child: const UploadScreen(),
+          child: UploadScreen(
+            userModel: args,
+          ),
         ),
       );
     }

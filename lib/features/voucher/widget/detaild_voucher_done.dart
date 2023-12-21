@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:trash_collector_app/features/auth/model/user_model.dart';
 import 'package:trash_collector_app/features/voucher/cubit/voucher_cubit.dart';
 import 'package:trash_collector_app/features/voucher/model/voucher_model.dart';
 import 'package:trash_collector_app/gen/assets/assets.gen.dart';
@@ -9,15 +8,12 @@ import '../../../common/widget/button_component.dart';
 import '../../../theme/app_style.dart';
 import '../../../theme/color_paletes.dart';
 
-class DetailVoucherWidget extends StatelessWidget {
-  const DetailVoucherWidget(
-      {super.key,
-      required this.voucher,
-      required this.onPressed,
-      required this.userModel});
+class DetailVoucherDone extends StatelessWidget {
+  const DetailVoucherDone({
+    super.key,
+    required this.voucher,
+  });
   final VoucherModel voucher;
-  final VoidCallback onPressed;
-  final UserModel userModel;
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +47,7 @@ class DetailVoucherWidget extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      userModel.point.toString(),
+                      '10000 diem',
                       style: const TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w400,
@@ -85,32 +81,6 @@ class DetailVoucherWidget extends StatelessWidget {
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: AppTextStyle.H4(color: ColorPalettes.darkColor),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: Text.rich(
-                      TextSpan(
-                          style: AppTextStyle.paragraphMedium(
-                              color: ColorPalettes.darkColor),
-                          text: 'Đổi',
-                          children: [
-                            WidgetSpan(
-                                child: SizedBox(
-                              width: 5,
-                            )),
-                            TextSpan(
-                                text: voucher.point.toString(),
-                                style: AppTextStyle.H5(color: Colors.green)),
-                            WidgetSpan(
-                                child: SizedBox(
-                              width: 5,
-                            )),
-                            TextSpan(
-                                text: 'điểm',
-                                style: AppTextStyle.paragraphMedium(
-                                    color: ColorPalettes.darkColor))
-                          ]),
                     ),
                   ),
                   Padding(
@@ -195,15 +165,6 @@ class DetailVoucherWidget extends StatelessWidget {
                 ],
               ),
             ),
-          ),
-          ButtonComponents(
-            onPressed: onPressed,
-            height: 56,
-            radius: 16,
-            title: 'Đổi điểm ngay',
-            textStyle:
-                AppTextStyle.buttonMedium(color: ColorPalettes.whiteColor),
-            backgroundColor: Colors.green,
           ),
         ],
       )),

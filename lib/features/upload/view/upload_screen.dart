@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:image/image.dart' as img;
 import 'package:trash_collector_app/common/widget/textfield_component.dart';
+import 'package:trash_collector_app/features/auth/model/user_model.dart';
 import 'package:trash_collector_app/features/upload/cubit/upload_cubit.dart';
 
 import 'package:trash_collector_app/features/upload/widget/image_bottom_sheet.dart';
@@ -24,8 +25,9 @@ enum _ResultStatus {
 }
 
 class UploadScreen extends StatefulWidget {
-  const UploadScreen({super.key});
+  const UploadScreen({super.key, required this.userModel});
   static const String routeName = '/UploadScreen';
+  final UserModel userModel;
 
   @override
   State<UploadScreen> createState() => _UploadScreenState();
@@ -306,6 +308,7 @@ class _UploadScreenState extends State<UploadScreen> {
                                               )));
                                     } else {
                                       context.read<UploadCubit>().uploadTrash(
+                                          userPoint: widget.userModel.point,
                                           typeTrash: title,
                                           accuracy: accuracyLabel,
                                           dateTrash:

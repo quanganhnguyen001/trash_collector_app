@@ -9,16 +9,19 @@ class UserModel extends Equatable {
   final String? imageUrl;
   final String? phone;
   final String? location;
+  final int? point;
   const UserModel(
       {this.uid,
       this.name,
       this.email,
       this.imageUrl,
       this.phone,
-      this.location});
+      this.location,
+      this.point});
 
   @override
-  List<Object?> get props => [uid, name, imageUrl, phone, email, location];
+  List<Object?> get props =>
+      [uid, name, imageUrl, phone, email, location, point];
 
   Map<String, dynamic> toMap() {
     final result = <String, dynamic>{};
@@ -41,6 +44,9 @@ class UserModel extends Equatable {
     if (location != null) {
       result.addAll({'location': location});
     }
+    if (point != null) {
+      result.addAll({'point': point});
+    }
 
     return result;
   }
@@ -53,6 +59,7 @@ class UserModel extends Equatable {
       imageUrl: map['imageUrl'],
       phone: map['phone'],
       location: map['location'],
+      point: map['point'],
     );
   }
 

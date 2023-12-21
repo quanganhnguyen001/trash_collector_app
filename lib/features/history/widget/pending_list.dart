@@ -4,6 +4,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:trash_collector_app/common/cubit/user/user_cubit.dart';
+import 'package:trash_collector_app/features/auth/model/user_model.dart';
 import 'package:trash_collector_app/features/history/widget/detail_trash_pending.dart';
 import 'package:trash_collector_app/features/history/widget/edit_trash.dart';
 import 'package:trash_collector_app/features/upload/model/trash_model.dart';
@@ -18,8 +20,12 @@ class PendingList extends StatelessWidget {
   const PendingList({
     super.key,
     required this.trashListPending,
+    required this.userModel,
+    required this.docId,
   });
   final List<TrashModel> trashListPending;
+  final UserModel userModel;
+  final String docId;
 
   @override
   Widget build(BuildContext context) {
@@ -62,16 +68,11 @@ class PendingList extends StatelessWidget {
                     SlidableAction(
                       borderRadius: BorderRadius.circular(12),
                       onPressed: (_) async {
-                        QuerySnapshot querySnapshot = await FirebaseFirestore
-                            .instance
-                            .collection('trash')
-                            .get();
-
                         AlertDialogComponent.showCupertinoAlertDialog(
                             context: context,
                             onPressed: () {
                               context.read<HistoryCubit>().deleteTrashPending(
-                                  querySnapshot.docs[index].id);
+                                  docId, userModel.point ?? 0);
                               Navigator.of(context).pop();
                             },
                             title: Str.of(context).delete_trash_user,

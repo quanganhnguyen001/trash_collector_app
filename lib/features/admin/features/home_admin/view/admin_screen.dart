@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:trash_collector_app/features/admin/features/home_admin/cubit/home_admin_cubit.dart';
 import 'package:trash_collector_app/features/admin/features/home_admin/widget/completed_trash_list_admin.dart';
+import 'package:trash_collector_app/features/auth/model/user_model.dart';
 import 'package:trash_collector_app/features/login/view/login_screen.dart';
 
 import '../../../../../common/widget/alert_dialog_component.dart';
@@ -15,7 +16,9 @@ import '../../../../../theme/color_paletes.dart';
 import '../widget/detail_trash_admin.dart';
 
 class AdminScreen extends StatelessWidget {
-  const AdminScreen({super.key});
+  const AdminScreen({
+    super.key,
+  });
   static const String routeName = '/AdminScreen';
 
   @override

@@ -6,6 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:trash_collector_app/features/upload/model/trash_model.dart';
 
+import '../../auth/model/user_model.dart';
+
 part 'history_state.dart';
 
 class HistoryCubit extends Cubit<HistoryState> {
@@ -37,6 +39,7 @@ class HistoryCubit extends Cubit<HistoryState> {
           dateTrash: doc['dateTrash'],
           timeTrash: doc['timeTrash'],
           statusTrash: doc['statusTrash'],
+          docId: doc.id,
         ));
       }
 
@@ -71,10 +74,18 @@ class HistoryCubit extends Cubit<HistoryState> {
     });
   }
 
-  deleteTrashPending(String docId) async {
+  deleteTrashPending(String docId, int userPoint) async {
     EasyLoading.show();
     try {
-      FirebaseFirestore.instance.collection('trash').doc(docId).delete();
+      await FirebaseFirestore.instance.collection('trash').doc(docId).delete();
+      if (userPoint >= 1000) {
+        await FirebaseFirestore.instance
+            .collection('users')
+            .doc(FirebaseAuth.instance.currentUser!.uid)
+            .update(UserModel(
+              point: userPoint - 1000,
+            ).toMap());
+      }
     } on FirebaseAuthException catch (e) {
       print(e);
     }

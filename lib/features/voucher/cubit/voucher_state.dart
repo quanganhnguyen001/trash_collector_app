@@ -1,10 +1,20 @@
 part of 'voucher_cubit.dart';
 
-sealed class VoucherState extends Equatable {
-  const VoucherState();
+class VoucherState extends Equatable {
+  const VoucherState(this.listVoucher, this.point);
+  final List<VoucherModel> listVoucher;
+  final int point;
 
   @override
-  List<Object> get props => [];
-}
+  List<Object> get props => [listVoucher];
 
-final class VoucherInitial extends VoucherState {}
+  VoucherState copyWith({
+    List<VoucherModel>? listVoucher,
+    int? point,
+  }) {
+    return VoucherState(
+      listVoucher ?? this.listVoucher,
+      point ?? this.point,
+    );
+  }
+}
