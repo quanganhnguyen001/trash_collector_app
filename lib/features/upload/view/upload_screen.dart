@@ -399,9 +399,13 @@ class _UploadScreenState extends State<UploadScreen> {
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              Text(
-                title,
-                style: const TextStyle(color: Colors.red, fontSize: 15),
+              Expanded(
+                child: Text(
+                  title,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(color: Colors.red, fontSize: 15),
+                ),
               ),
             ],
           ),

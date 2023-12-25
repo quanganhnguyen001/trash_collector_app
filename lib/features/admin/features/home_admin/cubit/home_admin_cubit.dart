@@ -13,7 +13,6 @@ class HomeAdminCubit extends Cubit<HomeAdminState> {
   HomeAdminCubit()
       : super(const HomeAdminState(
             trashListAdminPending: [], trashListAminCompleted: []));
-  String id = '';
 
   fetchDataAdmin() {
     fetchDataAdminPending();

@@ -170,8 +170,10 @@ class HistoryScreen extends StatelessWidget {
                                                 color: Colors.grey)),
                                         trailing: Text(
                                             state.trashListPending[index]
-                                                    .statusTrash ??
-                                                '',
+                                                        .statusTrash ==
+                                                    'pending'
+                                                ? 'Chờ thu gom'
+                                                : '',
                                             style: const TextStyle(
                                                 color: Colors.red)),
                                       ),

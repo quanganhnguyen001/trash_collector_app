@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:trash_collector_app/features/voucher/model/voucher_model.dart';
-import 'package:trash_collector_app/gen/assets/assets.gen.dart';
 
 import '../../../theme/app_style.dart';
 import '../../../theme/color_paletes.dart';
@@ -42,21 +41,6 @@ class DetailVoucherDone extends StatelessWidget {
                     ),
                   ],
                 ),
-                Row(
-                  children: [
-                    const Text(
-                      '10000 diem',
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.green),
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Assets.images.voucherIc.image(height: 30),
-                  ],
-                )
               ],
             ),
           ),

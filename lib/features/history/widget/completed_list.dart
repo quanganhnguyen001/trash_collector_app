@@ -39,7 +39,10 @@ class CompletedList extends StatelessWidget {
                     subtitle: Text(trashListCompleted[index].typeTrash ?? '',
                         style:
                             const TextStyle(fontSize: 14, color: Colors.grey)),
-                    trailing: Text(trashListCompleted[index].statusTrash ?? '',
+                    trailing: Text(
+                        trashListCompleted[index].statusTrash == 'done'
+                            ? 'Đã thu gom'
+                            : '',
                         style: const TextStyle(color: Colors.green)),
                   ),
                 ),

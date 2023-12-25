@@ -16,6 +16,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   #For UI
   uuid: ^4.2.1
+  youtube_player_flutter: ^8.1.2
   fluttertoast: ^8.2.4
   google_maps_flutter: ^2.5.0
   flutter_slidable: ^3.0.1
@@ -38,6 +39,7 @@ dependencies:
   firebase_auth: ^4.13.0
   cloud_firestore: ^4.13.0
   firebase_storage: ^11.5.2
+  firebase_messaging: ^14.7.9
   #For firebase
   flutter_easyloading: any
   

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+
 import 'package:trash_collector_app/common/cubit/user/user_cubit.dart';
+import 'package:trash_collector_app/common/widget/toast_component.dart';
 
 import 'package:trash_collector_app/features/auth/model/user_model.dart';
 import 'package:trash_collector_app/features/voucher/cubit/voucher_cubit.dart';
@@ -130,14 +131,9 @@ class _VoucherScreenState extends State<VoucherScreen> {
                                     onPressed: () {
                                       if (widget.userModel.point! <
                                           listVoucher[index].point!) {
-                                        Fluttertoast.showToast(
-                                            msg: 'Bạn không đủ điểm',
-                                            toastLength: Toast.LENGTH_LONG,
-                                            gravity: ToastGravity.TOP,
-                                            backgroundColor: Colors.red,
-                                            textColor: Colors.white,
-                                            timeInSecForIosWeb: 2,
-                                            fontSize: 18);
+                                        ToastComponent.showToast(
+                                            color: Colors.red,
+                                            msg: 'Bạn không đủ điểm');
                                       } else {
                                         context.read<VoucherCubit>().addVoucher(
                                             imageUrl:
@@ -151,6 +147,9 @@ class _VoucherScreenState extends State<VoucherScreen> {
                                             userPoint: widget.userModel.point,
                                             voucherPoint:
                                                 listVoucher[index].point);
+                                        ToastComponent.showToast(
+                                            color: Colors.red,
+                                            msg: 'Đổi voucher thành công');
                                       }
                                     },
                                     voucher: listVoucher[index],

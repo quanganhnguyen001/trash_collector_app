@@ -1,6 +1,6 @@
 0 Bìa cứng
-1 Kính
+1 Thủy tinh
 2 Kim loại
 3 Giấy
 4 Nhựa
-5 Rác
+5 Rác hỗn hợp
