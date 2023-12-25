@@ -12,6 +12,7 @@ import '../../../gen/localization/l10n.dart';
 import '../../../theme/app_style.dart';
 import '../../../theme/color_paletes.dart';
 import '../../auth/model/user_model.dart';
+import '../../chatgpt/view/chat_gpt_screen.dart';
 import '../../location/view/trash_location.dart';
 import '../model/video.dart';
 
@@ -71,8 +72,8 @@ class _RecycleScreenState extends State<RecycleScreen> {
                       ),
                       InkWell(
                           onTap: () {
-                            // Navigator.of(context)
-                            //     .pushNamed(ChatGptScreen.routeName);
+                            Navigator.of(context)
+                                .pushNamed(ChatGptScreen.routeName);
                           },
                           child: Assets.images.chatLogo.image(height: 40)),
                     ],

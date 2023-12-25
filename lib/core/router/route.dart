@@ -4,6 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trash_collector_app/features/admin/features/home_admin/cubit/home_admin_cubit.dart';
 import 'package:trash_collector_app/features/admin/features/home_admin/view/admin_screen.dart';
 import 'package:trash_collector_app/features/auth/model/user_model.dart';
+import 'package:trash_collector_app/features/chatgpt/cubit/chat_gpt_cubit.dart';
+import 'package:trash_collector_app/features/chatgpt/view/chat_gpt_screen.dart';
 import 'package:trash_collector_app/features/forgot_password/cubit/forgot_password_cubit.dart';
 import 'package:trash_collector_app/features/forgot_password/view/forgot_password_screen.dart';
 import 'package:trash_collector_app/features/history/cubit/history_cubit.dart';
@@ -55,6 +57,15 @@ class OnGenerateRoute {
         builder: (_) => BlocProvider(
           create: (context) => TrashLocationCubit(),
           child: const TrashLocationScreen(),
+        ),
+      );
+    }
+    if (settings.name == ChatGptScreen.routeName) {
+      return MaterialPageRoute(
+        settings: const RouteSettings(name: ChatGptScreen.routeName),
+        builder: (_) => BlocProvider(
+          create: (context) => ChatGptCubit(),
+          child: const ChatGptScreen(),
         ),
       );
     }
