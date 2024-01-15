@@ -29,11 +29,13 @@ class _EditTrashState extends State<EditTrash> {
   final trashNameController = TextEditingController();
   final trashDescriptionController = TextEditingController();
   final locationController = TextEditingController();
+  final phoneController = TextEditingController();
   @override
   void initState() {
     trashNameController.text = widget.trash.trashName ?? '';
     trashDescriptionController.text = widget.trash.trashDescription ?? '';
     locationController.text = widget.trash.locationTrash ?? '';
+    phoneController.text = widget.trash.phone ?? '';
 
     super.initState();
   }
@@ -90,12 +92,38 @@ class _EditTrashState extends State<EditTrash> {
                                 TextFieldComponents(
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
-                                      return Str.of(context).valid_trash_name;
+                                      return 'Vui lòng nhập tên';
                                     }
                                     return null;
                                   },
                                   controller: trashNameController,
                                   hinText: Str.of(context).enter_trash_name,
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 12,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  Str.of(context).phone,
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.w500),
+                                ),
+                                TextFieldComponents(
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return Str.of(context).valid_phone;
+                                    }
+                                    return null;
+                                  },
+                                  controller: phoneController,
+                                  hinText: 'Nhập số điện thoại',
                                 ),
                               ],
                             ),
@@ -249,6 +277,52 @@ class _EditTrashState extends State<EditTrash> {
                           ),
                           const SizedBox(
                             height: 12,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                'Khối lượng rác',
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Radio(
+                                value: 1,
+                                groupValue: widget.trash.weight,
+                                onChanged: (value) {
+                                  setState(() {
+                                    widget.trash.weight = value;
+                                  });
+                                },
+                              ),
+                              Text('3 kg'),
+                              Radio(
+                                value: 2,
+                                groupValue: widget.trash.weight,
+                                onChanged: (value) {
+                                  setState(() {
+                                    widget.trash.weight = value;
+                                  });
+                                },
+                              ),
+                              Text('5 kg'),
+                              Radio(
+                                value: 3,
+                                groupValue: widget.trash.weight,
+                                onChanged: (value) {
+                                  setState(() {
+                                    widget.trash.weight = value;
+                                  });
+                                },
+                              ),
+                              Text('> 8 kg'),
+                            ],
                           ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.stretch,

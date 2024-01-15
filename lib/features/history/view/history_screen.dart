@@ -140,42 +140,83 @@ class HistoryScreen extends StatelessWidget {
                                           ),
                                         ]),
                                     child: Container(
+                                      height: 170,
                                       decoration: BoxDecoration(
                                           color: Colors.white,
                                           border:
                                               Border.all(color: Colors.grey),
                                           borderRadius:
                                               BorderRadius.circular(16)),
-                                      child: ListTile(
-                                        leading: Image.network(
-                                          state.trashListPending[index]
-                                                  .trashImageUrl ??
-                                              '',
-                                          fit: BoxFit.cover,
-                                          width: 100,
-                                        ),
-                                        title: Text(
-                                            state.trashListPending[index]
-                                                    .trashName ??
-                                                '',
-                                            style: AppTextStyle.H5(
-                                                color:
-                                                    ColorPalettes.darkColor)),
-                                        subtitle: Text(
-                                            state.trashListPending[index]
-                                                    .typeTrash ??
-                                                '',
-                                            style: const TextStyle(
-                                                fontSize: 14,
-                                                color: Colors.grey)),
-                                        trailing: Text(
-                                            state.trashListPending[index]
-                                                        .statusTrash ==
-                                                    'pending'
-                                                ? 'Chờ thu gom'
-                                                : '',
-                                            style: const TextStyle(
-                                                color: Colors.red)),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          ListTile(
+                                            leading: Image.network(
+                                              state.trashListPending[index]
+                                                      .trashImageUrl ??
+                                                  '',
+                                              fit: BoxFit.cover,
+                                              width: 100,
+                                            ),
+                                            title: Text(
+                                                state.trashListPending[index]
+                                                        .trashName ??
+                                                    '',
+                                                style: AppTextStyle.H5(
+                                                    color: const Color.fromRGBO(
+                                                        60, 58, 54, 1))),
+                                            subtitle: Text(
+                                                'SĐT: ${state.trashListPending[index].phone}',
+                                                style: const TextStyle(
+                                                  fontSize: 14,
+                                                )),
+                                            trailing: Text(
+                                                state.trashListPending[index]
+                                                            .statusTrash ==
+                                                        'pending'
+                                                    ? 'Chờ thu gom'
+                                                    : '',
+                                                style: const TextStyle(
+                                                    color: Colors.red)),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 12),
+                                            child: Text(
+                                                'Địa chỉ: ${state.trashListPending[index].locationTrash}',
+                                                style: const TextStyle(
+                                                  fontSize: 14,
+                                                )),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 12),
+                                            child: Text(
+                                                'Loại rác: ${state.trashListPending[index].typeTrash}',
+                                                style: const TextStyle(
+                                                  fontSize: 14,
+                                                )),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 12),
+                                            child: Text(
+                                                'Ngày thu gom: ${state.trashListPending[index].dateTrash?.substring(0, 11)}',
+                                                style: const TextStyle(
+                                                  fontSize: 14,
+                                                )),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 12),
+                                            child: Text(
+                                                'Thời gian thu gom: ${state.trashListPending[index].timeTrash?.substring(10, 15)}',
+                                                style: const TextStyle(
+                                                  fontSize: 14,
+                                                )),
+                                          )
+                                        ],
                                       ),
                                     ),
                                   ),

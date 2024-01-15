@@ -12,6 +12,8 @@ class TrashModel {
   String? timeTrash;
   final String? statusTrash;
   final String? docId;
+  int? weight;
+  final String? phone;
 
   TrashModel({
     this.trashId,
@@ -25,6 +27,8 @@ class TrashModel {
     this.timeTrash,
     this.statusTrash,
     this.docId,
+    this.weight,
+    this.phone,
   });
 
   Map<String, dynamic> toMap() {
@@ -62,6 +66,12 @@ class TrashModel {
     }
     if (docId != null) {
       result.addAll({'docId': docId});
+    }
+    if (weight != null) {
+      result.addAll({'weight': weight});
+    }
+    if (phone != null) {
+      result.addAll({'phone': phone});
     }
 
     return result;

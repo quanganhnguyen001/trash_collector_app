@@ -11,7 +11,7 @@ import 'app/app.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  await NotificationHelper().initNotification();
+  // await NotificationHelper().initNotification();
   HydratedBloc.storage = await HydratedStorage.build(
     storageDirectory: kIsWeb
         ? HydratedStorage.webStorageDirectory
@@ -20,11 +20,11 @@ void main() async {
   runApp(const MyApp());
 }
 
-class NotificationHelper {
-  final messaging = FirebaseMessaging.instance;
-  Future initNotification() async {
-    await messaging.requestPermission();
-    final fcmToken = await messaging.getToken();
-    print('Token: $fcmToken');
-  }
-}
+// class NotificationHelper {
+//   final messaging = FirebaseMessaging.instance;
+//   Future initNotification() async {
+//     await messaging.requestPermission();
+//     final fcmToken = await messaging.getToken();
+//     print('Token: $fcmToken');
+//   }
+// }

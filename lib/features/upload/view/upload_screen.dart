@@ -39,6 +39,7 @@ class _UploadScreenState extends State<UploadScreen> {
   File? _selectedImageFile;
   final picker = ImagePicker();
   double _accuracy = 0.0;
+  int? selectedValue;
   _ResultStatus _resultStatus = _ResultStatus.notStarted;
   String _wasteLabel = '';
   TimeOfDay selectedTime = TimeOfDay.now();
@@ -46,6 +47,10 @@ class _UploadScreenState extends State<UploadScreen> {
   var accuracyLabel = '';
   @override
   void initState() {
+    context.read<UploadCubit>().phoneController.text =
+        widget.userModel.phone ?? '';
+    context.read<UploadCubit>().trashNameController.text =
+        widget.userModel.name ?? '';
     _loadClassifier();
     super.initState();
   }
@@ -116,7 +121,7 @@ class _UploadScreenState extends State<UploadScreen> {
                                 TextFieldComponents(
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
-                                      return Str.of(context).valid_trash_name;
+                                      return 'Vui lòng nhập tên';
                                     }
                                     return null;
                                   },
@@ -124,6 +129,34 @@ class _UploadScreenState extends State<UploadScreen> {
                                       .read<UploadCubit>()
                                       .trashNameController,
                                   hinText: Str.of(context).enter_trash_name,
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 12,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  Str.of(context).phone,
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.w500),
+                                ),
+                                TextFieldComponents(
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return Str.of(context).valid_phone;
+                                    }
+                                    return null;
+                                  },
+                                  controller: context
+                                      .read<UploadCubit>()
+                                      .phoneController,
+                                  hinText: 'Nhập số điện thoại',
                                 ),
                               ],
                             ),
@@ -291,6 +324,55 @@ class _UploadScreenState extends State<UploadScreen> {
                           const SizedBox(
                             height: 12,
                           ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                'Khối lượng rác',
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.w500),
+                              ),
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Radio(
+                                value: 1,
+                                groupValue: selectedValue,
+                                onChanged: (value) {
+                                  setState(() {
+                                    selectedValue = value;
+                                  });
+                                },
+                              ),
+                              Text('3 kg'),
+                              Radio(
+                                value: 2,
+                                groupValue: selectedValue,
+                                onChanged: (value) {
+                                  setState(() {
+                                    selectedValue = value;
+                                  });
+                                },
+                              ),
+                              Text('5 kg'),
+                              Radio(
+                                value: 3,
+                                groupValue: selectedValue,
+                                onChanged: (value) {
+                                  setState(() {
+                                    selectedValue = value;
+                                  });
+                                },
+                              ),
+                              Text('> 8 kg'),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 12,
+                          ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
@@ -316,7 +398,8 @@ class _UploadScreenState extends State<UploadScreen> {
                                           timeTrash:
                                               state.selectedTime.toString(),
                                           file: _selectedImageFile,
-                                          context: context);
+                                          context: context,
+                                          weight: selectedValue);
                                     }
                                   }
                                 },

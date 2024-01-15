@@ -41,7 +41,7 @@ class _TrashLocationScreenState extends State<TrashLocationScreen> {
 
   customMarker() {
     BitmapDescriptor.fromAssetImage(
-            const ImageConfiguration(), 'assets/images/icon_bin.png')
+            const ImageConfiguration(), 'assets/images/ic_voucher_map.png')
         .then((value) {
       setState(() {
         makerIcon = value;
@@ -54,7 +54,7 @@ class _TrashLocationScreenState extends State<TrashLocationScreen> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Địa điểm gần đây'),
+        title: const Text('Ưu đãi quanh đây'),
         leading: Padding(
           padding: const EdgeInsets.only(left: 16),
           child: IconButton(
@@ -84,7 +84,7 @@ class _TrashLocationScreenState extends State<TrashLocationScreen> {
                       markerId: const MarkerId('1'),
                       icon: makerIcon,
                       infoWindow: InfoWindow(
-                          title: 'Trường đại học thủy lợi',
+                          title: 'Circle K',
                           onTap: () async {
                             Position position = await context
                                 .read<TrashLocationCubit>()
@@ -97,7 +97,7 @@ class _TrashLocationScreenState extends State<TrashLocationScreen> {
                       markerId: const MarkerId('2'),
                       icon: makerIcon,
                       infoWindow: InfoWindow(
-                          title: 'Học viện ngân hàng',
+                          title: 'Winmart',
                           onTap: () async {
                             Position position = await context
                                 .read<TrashLocationCubit>()
@@ -110,7 +110,7 @@ class _TrashLocationScreenState extends State<TrashLocationScreen> {
                       markerId: const MarkerId('3'),
                       icon: makerIcon,
                       infoWindow: InfoWindow(
-                          title: 'Trường đại học công đoàn',
+                          title: 'Highlands Coffe',
                           onTap: () async {
                             Position position = await context
                                 .read<TrashLocationCubit>()

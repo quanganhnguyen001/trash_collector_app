@@ -29,6 +29,7 @@ class PendingList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('9999999999999');
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       child: ListView.builder(
@@ -94,10 +95,10 @@ class PendingList extends StatelessWidget {
                         fit: BoxFit.cover,
                         width: 100,
                       ),
-                      title: Text(trashListPending[index].trashName ?? '',
+                      title: Text(trashListPending[index].typeTrash ?? '',
                           style:
                               AppTextStyle.H5(color: ColorPalettes.darkColor)),
-                      subtitle: Text(trashListPending[index].typeTrash ?? '',
+                      subtitle: Text(trashListPending[index].dateTrash ?? '',
                           style: const TextStyle(
                               fontSize: 14, color: Colors.grey)),
                       trailing: Text(trashListPending[index].statusTrash ?? '',

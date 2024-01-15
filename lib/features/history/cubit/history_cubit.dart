@@ -40,6 +40,8 @@ class HistoryCubit extends Cubit<HistoryState> {
           timeTrash: doc['timeTrash'],
           statusTrash: doc['statusTrash'],
           docId: doc.id,
+          phone: doc['phone'],
+          weight: doc['weight'],
         ));
       }
 
@@ -67,6 +69,8 @@ class HistoryCubit extends Cubit<HistoryState> {
           dateTrash: doc['dateTrash'],
           timeTrash: doc['timeTrash'],
           statusTrash: doc['statusTrash'],
+          phone: doc['phone'],
+          weight: doc['weight'],
         ));
       }
 

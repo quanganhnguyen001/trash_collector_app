@@ -70,6 +70,26 @@ class DetailTrashPending extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
+                            Str.of(context).phone,
+                            style: const TextStyle(fontWeight: FontWeight.w500),
+                          ),
+                          TextFieldComponents(
+                            readOnly: true,
+                            value: trash.phone,
+                            hinText: Str.of(context).enter_description,
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 12,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
                             Str.of(context).description,
                             style: const TextStyle(fontWeight: FontWeight.w500),
                           ),
@@ -210,6 +230,39 @@ class DetailTrashPending extends StatelessWidget {
                     ),
                     const SizedBox(
                       height: 12,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          'Khối lượng rác',
+                          style: const TextStyle(fontWeight: FontWeight.w500),
+                        ),
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Radio(
+                          value: 1,
+                          groupValue: trash.weight,
+                          onChanged: (value) {},
+                        ),
+                        Text('3 kg'),
+                        Radio(
+                          value: 2,
+                          groupValue: trash.weight,
+                          onChanged: (value) {},
+                        ),
+                        Text('5 kg'),
+                        Radio(
+                          value: 3,
+                          groupValue: trash.weight,
+                          onChanged: (value) {},
+                        ),
+                        Text('> 8 kg'),
+                      ],
                     ),
                   ],
                 ),

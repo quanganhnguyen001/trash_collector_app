@@ -24,6 +24,7 @@ class UploadCubit extends Cubit<UploadState> {
   final trashNameController = TextEditingController();
   final trashDescriptionController = TextEditingController();
   final locationController = TextEditingController();
+  final phoneController = TextEditingController();
 
   selectDate(BuildContext context) async {
     final DateTime? dateTime = await showDatePicker(
@@ -53,6 +54,7 @@ class UploadCubit extends Cubit<UploadState> {
       required String timeTrash,
       required File? file,
       required int? userPoint,
+      required int? weight,
       required BuildContext context}) async {
     EasyLoading.show();
     try {
@@ -71,19 +73,37 @@ class UploadCubit extends Cubit<UploadState> {
             trashName: trashNameController.text,
             trashDescription: trashDescriptionController.text,
             trashImageUrl: imageUrl,
+            phone: phoneController.text,
             typeTrash: typeTrash,
             accuracy: accuracy,
+            weight: weight,
             locationTrash: locationController.text,
             dateTrash: dateTrash,
             timeTrash: timeTrash,
             statusTrash: 'pending',
           ).toMap());
-      FirebaseFirestore.instance
-          .collection('users')
-          .doc(FirebaseAuth.instance.currentUser!.uid)
-          .update(UserModel(
-            point: userPoint! + 1000,
-          ).toMap());
+      if (weight == 1) {
+        FirebaseFirestore.instance
+            .collection('users')
+            .doc(FirebaseAuth.instance.currentUser!.uid)
+            .update(UserModel(
+              point: userPoint! + 1000,
+            ).toMap());
+      } else if (weight == 2) {
+        FirebaseFirestore.instance
+            .collection('users')
+            .doc(FirebaseAuth.instance.currentUser!.uid)
+            .update(UserModel(
+              point: userPoint! + 3000,
+            ).toMap());
+      } else {
+        FirebaseFirestore.instance
+            .collection('users')
+            .doc(FirebaseAuth.instance.currentUser!.uid)
+            .update(UserModel(
+              point: userPoint! + 5000,
+            ).toMap());
+      }
     } on FirebaseAuthException catch (_) {
       rethrow;
     }

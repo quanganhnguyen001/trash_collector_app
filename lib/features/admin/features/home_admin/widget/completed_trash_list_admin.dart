@@ -26,25 +26,68 @@ class CompletedTrashListAdmin extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.only(bottom: 12),
                 child: Container(
+                  height: 170,
                   decoration: BoxDecoration(
                       color: Colors.white,
                       border: Border.all(color: Colors.grey),
                       borderRadius: BorderRadius.circular(16)),
-                  child: ListTile(
-                    leading: Image.network(
-                      trashListAdminCompleted[index].trashImageUrl ?? '',
-                      fit: BoxFit.cover,
-                      width: 100,
-                    ),
-                    title: Text(trashListAdminCompleted[index].trashName ?? '',
-                        style: AppTextStyle.H5(color: ColorPalettes.darkColor)),
-                    subtitle: Text(
-                        trashListAdminCompleted[index].typeTrash ?? '',
-                        style:
-                            const TextStyle(fontSize: 14, color: Colors.grey)),
-                    trailing: Text(
-                        trashListAdminCompleted[index].statusTrash ?? '',
-                        style: const TextStyle(color: Colors.green)),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ListTile(
+                        leading: Image.network(
+                          trashListAdminCompleted[index].trashImageUrl ?? '',
+                          fit: BoxFit.cover,
+                          width: 100,
+                        ),
+                        title: Text(
+                            trashListAdminCompleted[index].trashName ?? '',
+                            style: AppTextStyle.H5(
+                                color: const Color.fromRGBO(60, 58, 54, 1))),
+                        subtitle:
+                            Text('SĐT: ${trashListAdminCompleted[index].phone}',
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                )),
+                        trailing: Text(
+                            trashListAdminCompleted[index].statusTrash == 'done'
+                                ? 'Đã thu gom'
+                                : '',
+                            style: const TextStyle(color: Colors.green)),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        child: Text(
+                            'Địa chỉ: ${trashListAdminCompleted[index].locationTrash}',
+                            style: const TextStyle(
+                              fontSize: 14,
+                            )),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        child: Text(
+                            'Loại rác: ${trashListAdminCompleted[index].typeTrash}',
+                            style: const TextStyle(
+                              fontSize: 14,
+                            )),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        child: Text(
+                            'Ngày thu gom: ${trashListAdminCompleted[index].dateTrash?.substring(0, 11)}',
+                            style: const TextStyle(
+                              fontSize: 14,
+                            )),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        child: Text(
+                            'Thời gian thu gom: ${trashListAdminCompleted[index].timeTrash?.substring(10, 15)}',
+                            style: const TextStyle(
+                              fontSize: 14,
+                            )),
+                      )
+                    ],
                   ),
                 ),
               ),

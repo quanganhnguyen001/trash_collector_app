@@ -24,7 +24,7 @@ class AdminScreen extends StatelessWidget {
     return BlocBuilder<HomeAdminCubit, HomeAdminState>(
       builder: (context, state) {
         return DefaultTabController(
-          length: 3,
+          length: 2,
           child: Scaffold(
             appBar: AppBar(
               title: Text(
@@ -60,9 +60,6 @@ class AdminScreen extends StatelessWidget {
                         textAlign: TextAlign.center,
                       ),
                     ),
-                    Tab(
-                      child: Text('tét'),
-                    )
                   ]),
             ),
             body: TabBarView(
@@ -95,35 +92,80 @@ class AdminScreen extends StatelessWidget {
                           child: Padding(
                             padding: const EdgeInsets.only(bottom: 12),
                             child: Container(
+                              height: 170,
                               decoration: BoxDecoration(
                                   color: Colors.white,
                                   border: Border.all(color: Colors.grey),
                                   borderRadius: BorderRadius.circular(16)),
-                              child: ListTile(
-                                leading: Image.network(
-                                  state.trashListAdminPending[index]
-                                          .trashImageUrl ??
-                                      '',
-                                  fit: BoxFit.cover,
-                                  width: 100,
-                                ),
-                                title: Text(
-                                    state.trashListAdminPending[index]
-                                            .trashName ??
-                                        '',
-                                    style: AppTextStyle.H5(
-                                        color: ColorPalettes.darkColor)),
-                                subtitle: Text(
-                                    state.trashListAdminPending[index]
-                                            .typeTrash ??
-                                        '',
-                                    style: const TextStyle(
-                                        fontSize: 14, color: Colors.grey)),
-                                trailing: Text(
-                                    state.trashListAdminPending[index]
-                                            .statusTrash ??
-                                        '',
-                                    style: const TextStyle(color: Colors.red)),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  ListTile(
+                                    leading: Image.network(
+                                      state.trashListAdminPending[index]
+                                              .trashImageUrl ??
+                                          '',
+                                      fit: BoxFit.cover,
+                                      width: 100,
+                                    ),
+                                    title: Text(
+                                        state.trashListAdminPending[index]
+                                                .trashName ??
+                                            '',
+                                        style: AppTextStyle.H5(
+                                            color: const Color.fromRGBO(
+                                                60, 58, 54, 1))),
+                                    subtitle: Text(
+                                        'SĐT: ${state.trashListAdminPending[index].phone}',
+                                        style: const TextStyle(
+                                          fontSize: 14,
+                                        )),
+                                    trailing: Text(
+                                        state.trashListAdminPending[index]
+                                                    .statusTrash ==
+                                                'pending'
+                                            ? 'Chờ thu gom'
+                                            : '',
+                                        style:
+                                            const TextStyle(color: Colors.red)),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 12),
+                                    child: Text(
+                                        'Địa chỉ: ${state.trashListAdminPending[index].locationTrash}',
+                                        style: const TextStyle(
+                                          fontSize: 14,
+                                        )),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 12),
+                                    child: Text(
+                                        'Loại rác: ${state.trashListAdminPending[index].typeTrash}',
+                                        style: const TextStyle(
+                                          fontSize: 14,
+                                        )),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 12),
+                                    child: Text(
+                                        'Ngày thu gom: ${state.trashListAdminPending[index].dateTrash?.substring(0, 11)}',
+                                        style: const TextStyle(
+                                          fontSize: 14,
+                                        )),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 12),
+                                    child: Text(
+                                        'Thời gian thu gom: ${state.trashListAdminPending[index].timeTrash?.substring(10, 15)}',
+                                        style: const TextStyle(
+                                          fontSize: 14,
+                                        )),
+                                  )
+                                ],
                               ),
                             ),
                           ),
@@ -132,9 +174,6 @@ class AdminScreen extends StatelessWidget {
                 ),
                 CompletedTrashListAdmin(
                     trashListAdminCompleted: state.trashListAminCompleted),
-                Container(
-                  color: Colors.yellow,
-                )
               ],
             ),
           ),

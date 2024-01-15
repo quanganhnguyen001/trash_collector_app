@@ -39,6 +39,8 @@ class HomeAdminCubit extends Cubit<HomeAdminState> {
           timeTrash: doc['timeTrash'],
           statusTrash: doc['statusTrash'],
           docId: doc.id,
+          phone: doc['phone'],
+          weight: doc['weight'],
         ));
       }
 
@@ -65,6 +67,8 @@ class HomeAdminCubit extends Cubit<HomeAdminState> {
           dateTrash: doc['dateTrash'],
           timeTrash: doc['timeTrash'],
           statusTrash: doc['statusTrash'],
+          phone: doc['phone'],
+          weight: doc['weight'],
         ));
       }
 
