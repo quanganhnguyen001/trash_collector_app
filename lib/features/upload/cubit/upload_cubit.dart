@@ -55,6 +55,7 @@ class UploadCubit extends Cubit<UploadState> {
       required File? file,
       required int? userPoint,
       required int? weight,
+      required String? subAdministrativeArea,
       required BuildContext context}) async {
     EasyLoading.show();
     try {
@@ -80,6 +81,7 @@ class UploadCubit extends Cubit<UploadState> {
             locationTrash: locationController.text,
             dateTrash: dateTrash,
             timeTrash: timeTrash,
+            subAdministrativeArea: subAdministrativeArea,
             statusTrash: 'pending',
           ).toMap());
       if (weight == 1) {

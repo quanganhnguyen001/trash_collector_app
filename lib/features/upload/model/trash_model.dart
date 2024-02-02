@@ -14,6 +14,7 @@ class TrashModel {
   final String? docId;
   int? weight;
   final String? phone;
+  final String? subAdministrativeArea;
 
   TrashModel({
     this.trashId,
@@ -29,6 +30,7 @@ class TrashModel {
     this.docId,
     this.weight,
     this.phone,
+    this.subAdministrativeArea,
   });
 
   Map<String, dynamic> toMap() {
@@ -72,6 +74,9 @@ class TrashModel {
     }
     if (phone != null) {
       result.addAll({'phone': phone});
+    }
+    if (subAdministrativeArea != null) {
+      result.addAll({'subAdministrativeArea': subAdministrativeArea});
     }
 
     return result;

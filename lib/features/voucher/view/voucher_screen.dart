@@ -131,6 +131,8 @@ class _VoucherScreenState extends State<VoucherScreen> {
                                     onPressed: () {
                                       if (widget.userModel.point! <
                                           listVoucher[index].point!) {
+                                        print(widget.userModel.point!);
+                                        print(listVoucher[index].point!);
                                         ToastComponent.showToast(
                                             color: Colors.red,
                                             msg: 'Bạn không đủ điểm');

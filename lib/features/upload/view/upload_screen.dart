@@ -1,6 +1,8 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:geocoding/geocoding.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:image/image.dart' as img;
 import 'package:trash_collector_app/common/widget/textfield_component.dart';
@@ -45,6 +47,7 @@ class _UploadScreenState extends State<UploadScreen> {
   TimeOfDay selectedTime = TimeOfDay.now();
   var title = '';
   var accuracyLabel = '';
+  Placemark? place;
   @override
   void initState() {
     context.read<UploadCubit>().phoneController.text =
@@ -53,6 +56,65 @@ class _UploadScreenState extends State<UploadScreen> {
         widget.userModel.name ?? '';
     _loadClassifier();
     super.initState();
+  }
+
+  String? _currentAddress;
+  Position? _currentPosition;
+  Future<bool> _handleLocationPermission() async {
+    bool serviceEnabled;
+    LocationPermission permission;
+
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text(
+              'Location services are disabled. Please enable the services')));
+      return false;
+    }
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Location permissions are denied')));
+        return false;
+      }
+    }
+    if (permission == LocationPermission.deniedForever) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text(
+              'Location permissions are permanently denied, we cannot request permissions.')));
+      return false;
+    }
+    return true;
+  }
+
+  Future<void> _getCurrentPosition() async {
+    final hasPermission = await _handleLocationPermission();
+
+    if (!hasPermission) return;
+    await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high)
+        .then((Position position) {
+      setState(() => _currentPosition = position);
+      _getAddressFromLatLng(_currentPosition!);
+    }).catchError((e) {
+      debugPrint(e);
+    });
+  }
+
+  Future<void> _getAddressFromLatLng(Position position) async {
+    await placemarkFromCoordinates(
+            _currentPosition!.latitude, _currentPosition!.longitude)
+        .then((List<Placemark> placemarks) {
+      place = placemarks[0];
+      setState(() {
+        _currentAddress =
+            '${place?.street}, ${place?.subLocality}${place?.subAdministrativeArea}, ${place?.administrativeArea}';
+        context.read<UploadCubit>().locationController.text = _currentAddress!;
+      });
+    }).catchError((e) {
+      debugPrint(e);
+    });
   }
 
   Future<void> _loadClassifier() async {
@@ -269,9 +331,49 @@ class _UploadScreenState extends State<UploadScreen> {
                           const SizedBox(
                             height: 12,
                           ),
-                          CurrentLocationWidget(
-                            controller:
-                                context.read<UploadCubit>().locationController,
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  Str.of(context).location,
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.w500),
+                                ),
+                                TextFieldComponents(
+                                  validator: (value) {
+                                    if (value == null || value.isEmpty) {
+                                      return Str.of(context).valid_location;
+                                    }
+                                    return null;
+                                  },
+                                  maxlines: 2,
+                                  controller: context
+                                      .read<UploadCubit>()
+                                      .locationController,
+                                  rightIcon: InkWell(
+                                    onTap: () {
+                                      if (context
+                                          .read<UploadCubit>()
+                                          .locationController
+                                          .text
+                                          .isEmpty) {
+                                        _getCurrentPosition.call();
+                                      } else {
+                                        return;
+                                      }
+                                    },
+                                    child: const Icon(
+                                      Icons.location_on,
+                                      size: 30,
+                                      color: Colors.red,
+                                    ),
+                                  ),
+                                  hinText: Str.of(context).enter_location,
+                                ),
+                              ],
+                            ),
                           ),
                           const SizedBox(
                             height: 12,
@@ -399,7 +501,9 @@ class _UploadScreenState extends State<UploadScreen> {
                                               state.selectedTime.toString(),
                                           file: _selectedImageFile,
                                           context: context,
-                                          weight: selectedValue);
+                                          weight: selectedValue,
+                                          subAdministrativeArea:
+                                              place?.subAdministrativeArea);
                                     }
                                   }
                                 },

@@ -14,6 +14,7 @@ import '../../../theme/color_paletes.dart';
 import '../../auth/model/user_model.dart';
 import '../../chatgpt/view/chat_gpt_screen.dart';
 import '../../location/view/trash_location.dart';
+import '../../share/share_screen.dart';
 import '../model/video.dart';
 
 class RecycleScreen extends StatefulWidget {
@@ -76,6 +77,20 @@ class _RecycleScreenState extends State<RecycleScreen> {
                                 .pushNamed(ChatGptScreen.routeName);
                           },
                           child: Assets.images.chatLogo.image(height: 40)),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      InkWell(
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => ShareScreen(
+                                      userModel: widget.user,
+                                    )));
+                          },
+                          child: Icon(
+                            Icons.share,
+                            color: Colors.green,
+                          )),
                     ],
                   ),
                 ],

@@ -84,7 +84,6 @@ class Classifier {
       'Image: ${image.width}x${image.height}, '
       'size: ${image.length} bytes',
     );
-
     // Load the image and convert it to TensorImage for TensorFlow Input
     final inputImage = _preProcessInput(image);
 
@@ -103,13 +102,10 @@ class Classifier {
     _model.interpreter.run(inputImage.buffer, outputBuffer.buffer);
 
     debugPrint('OutputBuffer: ${outputBuffer.getDoubleList()}');
-
     // Post Process the outputBuffer
     final resultCategories = _postProcessOutput(outputBuffer);
     final topResult = resultCategories.first;
-
     debugPrint('Top category: $topResult');
-
     return topResult;
   }
 
